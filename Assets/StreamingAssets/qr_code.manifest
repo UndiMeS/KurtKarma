@@ -1,0 +1,32 @@
+ManifestFileVersion: 0
+CRC: 3536563046
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1716a60c70bfabbdab15cd175fe3de3b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: bbdfc258715529276a475e71f755c9de
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 61
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5818d6f020336074a899daa87f913652, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 90539df1cd5704abcb25fec9f3f5f84b, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 1971053207
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/QR_square.prefab
+Dependencies: []
