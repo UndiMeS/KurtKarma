@@ -7,21 +7,17 @@ public class ClickOnKey : MonoBehaviour
    public bool selected;
     public GameObject ItemPlaceOne;
     public GameObject ItemPlaceTwo;
-    public GameObject ItemPlaceThree;
     public GameObject ItemPlace;
     public int sortingorder = 8;
     private SpriteRenderer sprite;
     public bool InItemBarOne;
     public bool InItemBarTwo;
-    public bool InItemBarThree;
     public bool InItemBar;
     public bool DragOne;
     public bool DragTwo;
-    public bool DragThree;
     public GameObject InventoryArrow;
     public bool ItemBarStartOne;
     public bool ItemBarStartTwo;
-    public bool ItemBarStartThree;
 
     public Material M_material;
 
@@ -60,17 +56,9 @@ public class ClickOnKey : MonoBehaviour
 
         InItemBarOne = ItemPlaceOne.GetComponent<ItemPlace>().fullOne;
         InItemBarTwo = ItemPlaceTwo.GetComponent<ItemPlace>().fullTwo;
-        InItemBarThree = ItemPlaceThree.GetComponent<ItemPlace>().fullThree;
 
         ItemBarStartOne = ItemPlaceOne.GetComponent<ItemPlace>().ItemListStart;
         ItemBarStartTwo = ItemPlaceTwo.GetComponent<ItemPlace>().ItemListStart;
-        ItemBarStartThree = ItemPlaceThree.GetComponent<ItemPlace>().ItemListStart;
-
-        if(InItemBarThree == true)
-        {
-            ItemPlace = ItemPlaceTwo;
-            InItemBar = true;
-        }
 
         if(InItemBarTwo == true)
         {
@@ -99,8 +87,19 @@ public class ClickOnKey : MonoBehaviour
                 // }
         }
 
+        if(ItemBarStartOne == false && InItemBar == true && InItemBarOne == false && selected == false)
+        {
+            
+            
+            this.gameObject.transform.position = new Vector3(ItemPlaceOne.transform.position.x, ItemPlaceOne.transform.position.y, -1.0f);
+            ItemBarStartOne = true;
+            DragTwo = false;
+            InItemBarTwo = false;
+            DragOne = true;
+        }
 
-        if(DragOne == true && selected == true || DragTwo == true && selected == true || DragThree == true && selected == true)
+
+        if(DragOne == true && selected == true || DragTwo == true && selected == true)
         {
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector3(cursorPos.x, cursorPos.y, -1.0f);
@@ -108,7 +107,7 @@ public class ClickOnKey : MonoBehaviour
             // ItemPlaceTwo.GetComponent<BoxCollider2D>().enabled = false;
         }
 
-        if(selected == false && DragOne == true && InItemBarTwo == false  && DragTwo == false && InItemBarThree == false && DragThree == false)
+        if(selected == false && DragOne == true && InItemBarTwo == false  && DragTwo == false)
         {
             // ItemPlaceOne.GetComponent<BoxCollider2D>().enabled = true;
             // ItemPlaceTwo.GetComponent<BoxCollider2D>().enabled = true;
@@ -116,18 +115,13 @@ public class ClickOnKey : MonoBehaviour
             //InItemBarOne = false;
             //ItemBarStart = false;
         }
-        else if(selected == false && DragTwo == true && InItemBarTwo == false && InItemBarOne == true  && DragOne == false && InItemBarThree == false && DragThree == false)
+        else if(selected == false && DragTwo == true && InItemBarTwo == false && InItemBarOne == true  && DragOne == false)
         {
             // ItemPlaceTwo.GetComponent<BoxCollider2D>().enabled = true;
             // ItemPlaceOne.GetComponent<BoxCollider2D>().enabled = true;
             this.gameObject.transform.position = new Vector3(ItemPlaceTwo.transform.position.x, ItemPlaceTwo.transform.position.y, -1.0f);
         }
-        else if(selected == false && DragThree == true && DragTwo == false && InItemBarTwo == false && InItemBarOne == true  && DragOne == false && InItemBarThree == false && DragThree == false)
-        {
-            // ItemPlaceTwo.GetComponent<BoxCollider2D>().enabled = true;
-            // ItemPlaceOne.GetComponent<BoxCollider2D>().enabled = true;
-            this.gameObject.transform.position = new Vector3(ItemPlaceThree.transform.position.x, ItemPlaceThree.transform.position.y, -1.0f);
-        }
+
         else if(selected == false && DragOne == true && InItemBarTwo == true )
         {
             // ItemPlaceOne.GetComponent<BoxCollider2D>().enabled = true;
@@ -135,6 +129,12 @@ public class ClickOnKey : MonoBehaviour
             this.gameObject.transform.position = new Vector3(ItemPlaceOne.transform.position.x, ItemPlaceOne.transform.position.y, -1.0f);
             //InItemBarOne = false;
             //ItemBarStart = false;
+        }
+        else if(selected == true && DragTwo == false && InItemBarTwo == true && InItemBarOne == false  && DragOne == false)
+        {
+            // ItemPlaceTwo.GetComponent<BoxCollider2D>().enabled = true;
+            // ItemPlaceOne.GetComponent<BoxCollider2D>().enabled = true;
+            this.gameObject.transform.position = new Vector3(ItemPlaceOne.transform.position.x, ItemPlaceOne.transform.position.y, -1.0f);
         }
 
 

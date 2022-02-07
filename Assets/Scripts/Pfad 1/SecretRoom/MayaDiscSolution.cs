@@ -23,7 +23,7 @@ public class MayaDiscSolution : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (DiscColliderEnter == true && MayaDisc.GetComponent<ClickOnKey> ().selected == false) {
+        if (DiscColliderEnter == true && MayaDisc.GetComponent<ClickOnKey> ().selected == false && MayaDisc != null) {
             MayaDisc.transform.position = this.transform.position;
             MayaDisc.transform.localScale = new Vector3 (0.7f, 0.7f, 0);
             //MayaDisc.GetComponent<ClickOnMayaDisc> ().Drag = false;
