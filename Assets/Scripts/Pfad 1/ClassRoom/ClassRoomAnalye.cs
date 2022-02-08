@@ -24,6 +24,7 @@ public class ClassRoomAnalye : MonoBehaviour
 
     public GameObject PyramidDoorButton;
     public GameObject PortalButton;
+    public Settings SettingScript;
 
 
 
@@ -163,6 +164,7 @@ public class ClassRoomAnalye : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
         ClosetSound.Play();
+        SettingScript.HintNumber = 5;
         yield return new WaitForSeconds(1.0f);
         PyramidDoorButton.SetActive(true);
         PortalButton.SetActive(true);

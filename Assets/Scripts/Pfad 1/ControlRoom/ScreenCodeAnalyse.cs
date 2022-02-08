@@ -17,6 +17,8 @@ public class ScreenCodeAnalyse : MonoBehaviour
     public GameObject GreenFrame;
 
     public bool Correct;
+    public Settings SettingScript;
+    public bool HintBool;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,11 @@ public class ScreenCodeAnalyse : MonoBehaviour
             for(int x=0; x <5; x++)
             {
                 Code[x].readOnly = true;
+            }
+            if(HintBool == false)
+            {
+                SettingScript.HintNumber = 3;
+                HintBool = true;
             }
         }
         else

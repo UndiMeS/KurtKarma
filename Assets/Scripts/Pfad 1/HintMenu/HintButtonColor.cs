@@ -9,6 +9,7 @@ public class HintButtonColor : MonoBehaviour
     public Sprite YellowBulb;
     public Timer Time;
     public bool AlreadyPressed = false;
+    public Animator Penalty;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class HintButtonColor : MonoBehaviour
         if(AlreadyPressed == false)
         {
             Time.startTime = Time.startTime - 120;
+            Penalty.SetTrigger("PenaltyBool");
             this.gameObject.GetComponent<Image>().sprite = YellowBulb;
             AlreadyPressed = true;
         }
@@ -37,6 +39,7 @@ public class HintButtonColor : MonoBehaviour
         if(AlreadyPressed == false)
         {
             Time.startTime = Time.startTime - 240;
+            Penalty.SetTrigger("PenaltyBool");
             this.gameObject.GetComponent<Image>().sprite = YellowBulb;
             AlreadyPressed = true;
         }

@@ -55,6 +55,7 @@ public class ChipSolution : MonoBehaviour
     public bool playAudioTwo;
     public bool playAudioThree;
     public int countAudio = 0;
+    public Settings SettingScript;
 
     public AudioSource ShortTrue;
     // Start is called before the first frame update
@@ -75,6 +76,7 @@ public class ChipSolution : MonoBehaviour
             if(Sound == true)
             {
                 Electricity.Play();
+                SettingScript.HintNumber = 2;
                 Sound = false;
             }
             

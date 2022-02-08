@@ -67,20 +67,50 @@ public class Settings : MonoBehaviour
         {
             case 1:
                 HintOne.SetActive(true);
+                HintTwo.SetActive(false);
+                HintThree.SetActive(false);
+                HintFour.SetActive(false);
+                HintFive.SetActive(false);
+                HintSix.SetActive(false);
                 break;
             case 2:
+                HintOne.SetActive(false);
                 HintTwo.SetActive(true);
+                HintThree.SetActive(false);
+                HintFour.SetActive(false);
+                HintFive.SetActive(false);
+                HintSix.SetActive(false);
                 break;
             case 3:
+            HintOne.SetActive(false);
+                HintTwo.SetActive(false);
                 HintThree.SetActive(true);
+                HintFour.SetActive(false);
+                HintFive.SetActive(false);
+                HintSix.SetActive(false);
                 break;
             case 4:
+            HintOne.SetActive(false);
+            HintTwo.SetActive(false);
+                HintThree.SetActive(false);
                 HintFour.SetActive(true);
+                HintFive.SetActive(false);
+                HintSix.SetActive(false);
                 break;
             case 5:
+            HintOne.SetActive(false);
+            HintTwo.SetActive(false);
+            HintThree.SetActive(false);
+                HintFour.SetActive(false);
                 HintFive.SetActive(true);
+                HintSix.SetActive(false);
                 break;
             case 6:
+            HintOne.SetActive(false);
+            HintTwo.SetActive(false);
+            HintThree.SetActive(false);
+            HintFour.SetActive(false);
+                HintFive.SetActive(false);
                 HintSix.SetActive(true);
                 break;
         }

@@ -33,6 +33,7 @@ public class Input_Analyse_Door : MonoBehaviour
     public bool DoorOpen;
 
     public GameObject BackButton;
+    public Settings SettingScript;
 
     //public AudioSource RichtigSound;
     // Start is called before the first frame update
@@ -62,58 +63,18 @@ public class Input_Analyse_Door : MonoBehaviour
             if(code1 != null && code2 != null && code3 != null)
             {
                 if(code1 == "2" && code2 == "5" && code3 == "1")
-        {
-             CorrectPw = true;
-                DoorOpen = false;
+                {
+                    CorrectPw = true;
+                    DoorOpen = false;
 
-            }
-            else
-            {
-                CorrectPw = false;
-            }
+                    }
+                else
+                {
+                    CorrectPw = false;
+                }
             }
             
-        //}
 
-        
-            //confirm();
-        
-
-
-        
-
-        // if(code1.Length == 1)
-        // {
-        //     Inputfield2.Select();
-        //     Inputfield2.ActivateInputField();
-        // }
-
-        // if(code2.Length == 1)
-        // {
-        //     Inputfield3.Select();
-        //     Inputfield3.ActivateInputField();
-        // }
-
-        // if(code3.Length == 1)
-        // {
-        //     Inputfield1.Select();
-        //     Inputfield1.ActivateInputField();
-        // }
-
-
-            // if(code1 == "2" && code2 == "5" && code3 == "1" && DoorOpen == false)
-            // {
-            //     CorrectPw = true;
-            //     DoorOpen = false;
-
-            // }
-            // else
-            // {
-            //     CorrectPw = false;
-            // }
-            // //confirm();
-
-        
     }
 
     public void confirm()
@@ -139,20 +100,6 @@ public class Input_Analyse_Door : MonoBehaviour
         }
     }
 
-    // IEnumerator WaitAndConfirm(float waitTime)
-    // {
-    //     yield return new WaitForSeconds(waitTime);
-    //     ComputerScreen_1.SetActive(false);
-    //     ComputerScreen_1_2.SetActive(true);
-    //     Debug.Log("confirm");
-    // }
-
-    // IEnumerator ErrorWait(float waitTime)
-    // {
-    //     yield return new WaitForSeconds(waitTime);
-    //     ConfirmButton.SetActive(true);
-    //     ErrorButton.SetActive(false);
-    // }
 
 
     IEnumerator WaitAndConfirm(float waitTime)
@@ -170,6 +117,8 @@ public class Input_Analyse_Door : MonoBehaviour
             ControlRoomPic.SetActive(true);
             //ControlRoom.SetActive(true);
 
+            SettingScript.HintNumber = 4;
+
             CorrectPw = false;
             DoorOpen = true;
     }
@@ -182,27 +131,4 @@ public class Input_Analyse_Door : MonoBehaviour
         // ErrorButton.SetActive(false);
     }
 
-    // public void FieldOneEnd()
-    // {
-
-    //     string code1 = Input_1.GetComponent<TMP_InputField>().text;
-        
-    //     if(code1.Length == 1)
-    //     {
-    //     Inputfield2.Select();
-    //     Inputfield2.ActivateInputField();
-    //     }
-
-    // }
-
-    // public void FieldTwoEnd()
-    // {
-    //     string code2 = Input_2.GetComponent<TMP_InputField>().text;
-    //     if(code2.Length == 1)
-    //     {
-    //     Inputfield3.Select();
-    //     Inputfield3.ActivateInputField();
-    //     }
-
-    // }
 }

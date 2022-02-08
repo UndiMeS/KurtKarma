@@ -64,6 +64,8 @@ public class Computer_Button_1_Handler : MonoBehaviour {
     public GameObject TasseGross;
     public GameObject ZettelGross;
 
+    public Settings SettingScript;
+
     // Start is called before the first frame update
     void Start () {
         AllTitles.SetActive(true);
@@ -246,6 +248,7 @@ public class Computer_Button_1_Handler : MonoBehaviour {
     public void FinalComputerScreenClick(){
         ControllRoomBackground.SetActive (false);
         FinalComputerBig.SetActive(true);
+        SettingScript.HintNumber = 6;
         OutroVideoPlayer.Prepare();
     }
 
