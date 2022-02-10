@@ -27,6 +27,7 @@ public class HintButtonColor : MonoBehaviour
         if(AlreadyPressed == false)
         {
             Time.startTime = Time.startTime - 120;
+            Settings.BlueBulbCount += 1;
             Penalty.SetTrigger("PenaltyBool");
             this.gameObject.GetComponent<Image>().sprite = YellowBulb;
             AlreadyPressed = true;
@@ -39,6 +40,7 @@ public class HintButtonColor : MonoBehaviour
         if(AlreadyPressed == false)
         {
             Time.startTime = Time.startTime - 240;
+            Settings.RedBulbCount += 1;
             Penalty.SetTrigger("PenaltyBool");
             this.gameObject.GetComponent<Image>().sprite = YellowBulb;
             AlreadyPressed = true;

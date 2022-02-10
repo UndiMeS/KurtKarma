@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Settings : MonoBehaviour
 {
@@ -16,6 +18,13 @@ public class Settings : MonoBehaviour
     public GameObject HintFour;
     public GameObject HintFive;
     public GameObject HintSix;
+    public GameObject InventoryArrowDown;
+    public GameObject InventoryArrowUp;
+    public InventarArrow InventoryArrowScript;
+
+    public static int BlueBulbCount;
+    public static int RedBulbCount;
+    
 
     public int HintNumber = 1;
     
@@ -26,6 +35,7 @@ public class Settings : MonoBehaviour
     {
         SettingsMenu.SetActive(false);
         ConfirmMenu.SetActive(false);
+        InventoryArrowScript = InventoryArrowDown.GetComponent<InventarArrow>();
     }
 
     // Update is called once per frame
@@ -63,6 +73,9 @@ public class Settings : MonoBehaviour
     {
         GameScreen.SetActive(false);
         HintBackground.SetActive(true);
+        InventoryArrowScript.OppositeArrow.GetComponent<InventarArrow>().selected = false;
+        InventoryArrowScript.selected = true;
+        InventoryArrowUp.SetActive(false);
         switch (HintNumber)
         {
             case 1:
@@ -119,6 +132,7 @@ public class Settings : MonoBehaviour
     public void CloseHint()
     {
         GameScreen.SetActive(true);
+        InventoryArrowUp.SetActive(true);
         HintBackground.SetActive(false);
     }
 
