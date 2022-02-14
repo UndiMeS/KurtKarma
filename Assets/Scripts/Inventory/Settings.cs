@@ -21,6 +21,8 @@ public class Settings : MonoBehaviour
     public GameObject InventoryArrowDown;
     public GameObject InventoryArrowUp;
     public InventarArrow InventoryArrowScript;
+    public GameObject HintIntro;
+    public bool HintIntroBool;
 
     public static int BlueBulbCount;
     public static int RedBulbCount;
@@ -76,7 +78,15 @@ public class Settings : MonoBehaviour
         InventoryArrowScript.OppositeArrow.GetComponent<InventarArrow>().selected = false;
         InventoryArrowScript.selected = true;
         InventoryArrowUp.SetActive(false);
-        switch (HintNumber)
+
+        if(HintIntroBool == false)
+        {
+            HintIntro.SetActive(true);
+            HintIntroBool = true;
+        }
+        else
+        {
+            switch (HintNumber)
         {
             case 1:
                 HintOne.SetActive(true);
@@ -127,6 +137,8 @@ public class Settings : MonoBehaviour
                 HintSix.SetActive(true);
                 break;
         }
+        }
+        
         
     }
     public void CloseHint()

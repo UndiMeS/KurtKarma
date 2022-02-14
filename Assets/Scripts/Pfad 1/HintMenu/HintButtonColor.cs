@@ -10,6 +10,8 @@ public class HintButtonColor : MonoBehaviour
     public Timer Time;
     public bool AlreadyPressed = false;
     public Animator Penalty;
+    public Image BulbImage;
+    public float delay = 2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,8 +31,9 @@ public class HintButtonColor : MonoBehaviour
             Time.startTime = Time.startTime - 120;
             Settings.BlueBulbCount += 1;
             Penalty.SetTrigger("PenaltyBool");
-            this.gameObject.GetComponent<Image>().sprite = YellowBulb;
+            BulbImage.sprite = YellowBulb;
             AlreadyPressed = true;
+            //Destroy (Penalty.gameObject, Penalty.GetCurrentAnimatorStateInfo(0).length + delay); 
         }
         
     }
@@ -42,8 +45,10 @@ public class HintButtonColor : MonoBehaviour
             Time.startTime = Time.startTime - 240;
             Settings.RedBulbCount += 1;
             Penalty.SetTrigger("PenaltyBool");
-            this.gameObject.GetComponent<Image>().sprite = YellowBulb;
+
+            BulbImage.sprite = YellowBulb;
             AlreadyPressed = true;
+            //Destroy (Penalty.gameObject, Penalty.GetCurrentAnimatorStateInfo(0).length + delay); 
         }
         
     }
