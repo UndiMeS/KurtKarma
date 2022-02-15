@@ -9022,6 +9022,8 @@ Transform:
   - {fileID: 494456429}
   - {fileID: 355465512}
   - {fileID: 849277152}
+  - {fileID: 630477878}
+  - {fileID: 652773560}
   m_Father: {fileID: 1016120907}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30934,11 +30936,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630477877}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.02, y: -0.02, z: 0}
-  m_LocalScale: {x: 1.0541301, y: 1.0550737, z: 1.0545517}
+  m_LocalPosition: {x: 0.47000074, y: -0.019999743, z: -5.3099823}
+  m_LocalScale: {x: 1.0541301, y: 1.0550737, z: 1.0545516}
   m_Children: []
-  m_Father: {fileID: 1218337859}
-  m_RootOrder: 3
+  m_Father: {fileID: 175072985}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &630477879
 SpriteRenderer:
@@ -32291,15 +32293,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 652773559}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 88.84}
+  m_LocalPosition: {x: 0, y: 0, z: 83.53001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1218337859}
-  m_RootOrder: 4
+  m_Father: {fileID: 175072985}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.032, y: -0.06600058}
+  m_AnchoredPosition: {x: 0.45800304, y: -0.06600058}
   m_SizeDelta: {x: 1.2621217, y: 1.6710858}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &652773561
@@ -64038,8 +64040,6 @@ Transform:
   - {fileID: 2086543420}
   - {fileID: 57172131}
   - {fileID: 2142246386}
-  - {fileID: 630477878}
-  - {fileID: 652773560}
   m_Father: {fileID: 1016120907}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -64640,7 +64640,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1222754316}
-        m_MethodName: TwoPenaltyMinutes
+        m_MethodName: FourPenaltyMinutes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -71327,7 +71327,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1335124099}
-        m_MethodName: TwoPenaltyMinutes
+        m_MethodName: FourPenaltyMinutes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -90383,7 +90383,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1704015867}
-        m_MethodName: TwoPenaltyMinutes
+        m_MethodName: FourPenaltyMinutes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -92618,7 +92618,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1746994976}
-        m_MethodName: TwoPenaltyMinutes
+        m_MethodName: FourPenaltyMinutes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
