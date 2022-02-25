@@ -22,6 +22,7 @@ public class SolutionNumberLine : MonoBehaviour
     public string urlOutro;
     public GameObject ControlRoom;
     public GameObject Inventar;
+    public Timer TimerScript;
 
     //public AudioSource RichtigSound;
 
@@ -83,6 +84,9 @@ void OnTriggerExit2D(Collider2D collision)
 
 IEnumerator OutroStart()
 {
+
+    //TimerScript.StopTime();
+
     yield return new WaitForSeconds(2);
     Inventar.SetActive(false);
     

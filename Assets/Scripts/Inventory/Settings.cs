@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Settings : MonoBehaviour
@@ -68,7 +69,8 @@ public class Settings : MonoBehaviour
 
     public void QuitButton()
     {
-        Application.Quit();
+        SceneManager.LoadScene("StartMenu");
+        //Application.Quit();
     }
 
     public void HintButton()

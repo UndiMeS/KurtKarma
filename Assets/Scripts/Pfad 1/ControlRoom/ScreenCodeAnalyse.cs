@@ -57,4 +57,9 @@ public class ScreenCodeAnalyse : MonoBehaviour
             Correct = false;
         }
     }
+
+    public void OnClick()
+    {
+        
+    }
 }

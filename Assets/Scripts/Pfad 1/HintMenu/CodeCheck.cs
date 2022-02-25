@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class CodeCheck : MonoBehaviour
@@ -11,6 +12,8 @@ public class CodeCheck : MonoBehaviour
     public string[] CodeSolution;
     public GameObject[] RedSquare;
     public GameObject[] GreenSquare;
+    public int ClickCount = 0;
+    public Button CodeButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,18 +32,32 @@ public class CodeCheck : MonoBehaviour
     }
 
     public void CheckCode(){
-        for(int i = 0; i < Code.Length; i++)
+
+        if(ClickCount == 0)
         {
-            if(Code[i].text == CodeSolution[i])
+            for(int i = 0; i < Code.Length; i++)
             {
-                GreenSquare[i].SetActive(true);
-                RedSquare[i].SetActive(false);
+                if(Code[i].text == CodeSolution[i])
+                {
+                    GreenSquare[i].SetActive(true);
+                    RedSquare[i].SetActive(false);
+                }
+                else
+                {
+                    RedSquare[i].SetActive(true);
+                    GreenSquare[i].SetActive(false);
+                }
+
+                Code[i].enabled = false;
             }
-            else
-            {
-                RedSquare[i].SetActive(true);
-                GreenSquare[i].SetActive(false);
-            }
+            ClickCount += 1;
+            CodeButton.interactable = false;
+
         }
+        else
+        {
+            
+        }
+        
     }
 }
