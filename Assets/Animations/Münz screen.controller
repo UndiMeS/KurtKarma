@@ -54,7 +54,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "Mu\u0308nz screen"
+  m_Name: "M\xFCnz screen"
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
