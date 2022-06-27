@@ -29,6 +29,11 @@ public class SecretRoomButtons : MonoBehaviour
     public GameObject XBertFinalScreen;
     public GameObject StartMenu;
 
+    public GameObject TransitionIn;
+    public GameObject TransitionOut;
+    public float TransitionTime;
+    public AudioSource Backgroundmusic;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,27 +62,78 @@ public class SecretRoomButtons : MonoBehaviour
 
     public void PortalToClassroom()
     {
+        StartCoroutine(PortalToClassroomTransition());
+        
+        
+    }
+
+    public IEnumerator PortalToClassroomTransition()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ClassRoom.SetActive(true);
         ArcadeRoom.SetActive(false);
         InventoryDown.selected = true;
-        
-        
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     public void ClickOnPyramid()
     {
+        StartCoroutine(ClickOnPyramidTranstion());
+    }
+
+    public IEnumerator ClickOnPyramidTranstion()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         OpenPyramid.SetActive(true);
         ClosedPyramid.SetActive(false);
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     public void ClickOnMayaImage()
     {
+        StartCoroutine(ClickOnMayaImageTransition());
+    }
+
+    public IEnumerator ClickOnMayaImageTransition()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         GeheimerRaum.SetActive(false);
         MayaImage.SetActive(true);
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     public void ClickOnPinBoard()
     {
+        StartCoroutine(ClickOnPinBoardTransition());
+    }
+
+    public IEnumerator ClickOnPinBoardTransition()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         GeheimerRaum.SetActive(false);
         InventoryDown.selected = true;
         InventoryArrowUp.SetActive(false);
@@ -86,7 +142,14 @@ public class SecretRoomButtons : MonoBehaviour
         PinBoard.SetActive(true);
         
         XBertStartScreen.SetActive(true);
+        //StartCoroutine(FadeOut(Backgroundmusic, 400.0f));
+        Backgroundmusic.Stop();
         StartCoroutine(IntroScreen());
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
         IEnumerator IntroScreen()
@@ -100,34 +163,109 @@ public class SecretRoomButtons : MonoBehaviour
 
     public void ClickOnPinBoardSolution()
     {
+        StartCoroutine(ClickOnPinBoardSolutionTransition());
+    }
+
+    public IEnumerator ClickOnPinBoardSolutionTransition()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         GeheimerRaum.SetActive(false);
         PinBoardSolution.SetActive(true);
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     public void ClickOnChestPicture()
     {
+        StartCoroutine(ClickOnChestPictureTransition());
+    }
+
+    public IEnumerator ClickOnChestPictureTransition()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         GeheimerRaum.SetActive(false);
         ChestPicture.SetActive(true);
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     public void BackButton()
     {
+        StartCoroutine(BackButtonTransition());
+    }
+
+    public IEnumerator BackButtonTransition()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        
+
         MayaImage.SetActive(false);
         PinBoard.SetActive(false);
         ChestPicture.SetActive(false);
         GeheimerRaum.SetActive(true);
         PinBoardSolution.SetActive(false);
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
+        Backgroundmusic.Play();
     }
 
     public void FinishedArcadeButton()
     {
+        StartCoroutine(FinishedArcadeButtonTransition());
+        
+        //ArcadeRoom.SetActive(false);
+    }
+
+    public IEnumerator FinishedArcadeButtonTransition()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         PinBoard.SetActive(true);
         InventoryDown.selected = true;
         InventoryArrowUp.SetActive(false);
         XBertFinalScreen.SetActive(true);
         GeheimerRaum.SetActive(false);
-        
-        //ArcadeRoom.SetActive(false);
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+
+
+    public static IEnumerator FadeOut (AudioSource audioSource, float FadeTime) {
+        float startVolume = audioSource.volume;
+ 
+        while (audioSource.volume > 0) {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+ 
+            yield return null;
+        }
+ 
+        audioSource.Stop ();
+        audioSource.volume = startVolume;
     }
 
 

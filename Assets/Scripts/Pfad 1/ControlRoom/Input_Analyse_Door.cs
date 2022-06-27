@@ -35,6 +35,20 @@ public class Input_Analyse_Door : MonoBehaviour
     public GameObject BackButton;
     public Settings SettingScript;
 
+    public GameObject DevilButton;
+    public GameObject HellExitLeft;
+    public GameObject HellExitRight;
+    public GameObject PartyButton;
+    public GameObject Konfetti;
+
+    public bool hell;
+    public bool party;
+
+
+    public GameObject TransitionIn;
+    public GameObject TransitionOut;
+    public float TransitionTime;
+
     //public AudioSource RichtigSound;
     // Start is called before the first frame update
     void Start()
@@ -68,9 +82,19 @@ public class Input_Analyse_Door : MonoBehaviour
                     DoorOpen = false;
 
                     }
+                    else if(code1 == "6" && code2 == "6" && code3 == "6")
+                    {
+                        hell = true;
+                    }
+                    else if(code1 == "0" && code2 == "4" && code3 == "2")
+                    {
+                        party = true;
+                    }
                 else
                 {
                     CorrectPw = false;
+                    hell = false;
+                    party = false;
                 }
             }
             
@@ -90,13 +114,25 @@ public class Input_Analyse_Door : MonoBehaviour
 
             
         }
-        else if(CorrectPw == false)
+        else if(CorrectPw == false && hell == false && party == false)
         {
 
             ErrorButton.SetActive(true);
             StartCoroutine(ErrorWait(WaitTime));
             
 
+        }
+        else if(CorrectPw == false && hell == true && party == false)
+        {
+            DevilButton.SetActive(true);
+            hell = false;
+            StartCoroutine(HellWait(WaitTime));
+        }
+        else if(CorrectPw == false && party == true && hell == false)
+        {
+            PartyButton.SetActive(true);
+            party = false;
+            StartCoroutine(PartyWait(WaitTime));
         }
     }
 
@@ -109,9 +145,11 @@ public class Input_Analyse_Door : MonoBehaviour
         // ComputerScreen_1_2.SetActive(true);
         //Debug.Log("confirm");
 
-        
-            //PyramidRoom.SetActive(true);
-            RedCodeDoor.SetActive(false);
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        RedCodeDoor.SetActive(false);
             GreenCodeDoor.SetActive(true);
             DoorCode.SetActive(false);
             ControlRoomPic.SetActive(true);
@@ -121,6 +159,15 @@ public class Input_Analyse_Door : MonoBehaviour
 
             CorrectPw = false;
             DoorOpen = true;
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
+        
+            //PyramidRoom.SetActive(true);
+            
     }
 
     IEnumerator ErrorWait(float waitTime)
@@ -130,5 +177,25 @@ public class Input_Analyse_Door : MonoBehaviour
         // ConfirmButton.SetActive(true);
         // ErrorButton.SetActive(false);
     }
+
+    IEnumerator HellWait(float waitTime)
+    {
+        HellExitLeft.SetActive(true);
+        HellExitRight.SetActive(true);
+        yield return new WaitForSeconds(waitTime);
+        //hell = false;
+        DevilButton.SetActive(false);
+        
+    }
+
+    IEnumerator PartyWait(float waitTime)
+    {
+        Konfetti.SetActive(true);
+        yield return new WaitForSeconds(waitTime);
+        //party = false;
+        PartyButton.SetActive(false);
+        
+    }
+
 
 }

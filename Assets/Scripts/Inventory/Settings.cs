@@ -19,6 +19,7 @@ public class Settings : MonoBehaviour
     public GameObject HintFour;
     public GameObject HintFive;
     public GameObject HintSix;
+    public GameObject HintSeven;
     public GameObject InventoryArrowDown;
     public GameObject InventoryArrowUp;
     public InventarArrow InventoryArrowScript;
@@ -27,6 +28,9 @@ public class Settings : MonoBehaviour
 
     public static int BlueBulbCount;
     public static int RedBulbCount;
+    public static List<float> Hints = new List<float>();
+
+    public List<float> ShowHints = new List<float>();
     
 
     public int HintNumber = 1;
@@ -44,7 +48,7 @@ public class Settings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ShowHints = Hints;
     }
 
     public void SettingsButton()
@@ -97,6 +101,7 @@ public class Settings : MonoBehaviour
                 HintFour.SetActive(false);
                 HintFive.SetActive(false);
                 HintSix.SetActive(false);
+                HintSeven.SetActive(false);
                 break;
             case 2:
                 HintOne.SetActive(false);
@@ -105,6 +110,7 @@ public class Settings : MonoBehaviour
                 HintFour.SetActive(false);
                 HintFive.SetActive(false);
                 HintSix.SetActive(false);
+                HintSeven.SetActive(false);
                 break;
             case 3:
             HintOne.SetActive(false);
@@ -113,6 +119,7 @@ public class Settings : MonoBehaviour
                 HintFour.SetActive(false);
                 HintFive.SetActive(false);
                 HintSix.SetActive(false);
+                HintSeven.SetActive(false);
                 break;
             case 4:
             HintOne.SetActive(false);
@@ -121,6 +128,7 @@ public class Settings : MonoBehaviour
                 HintFour.SetActive(true);
                 HintFive.SetActive(false);
                 HintSix.SetActive(false);
+                HintSeven.SetActive(false);
                 break;
             case 5:
             HintOne.SetActive(false);
@@ -129,6 +137,7 @@ public class Settings : MonoBehaviour
                 HintFour.SetActive(false);
                 HintFive.SetActive(true);
                 HintSix.SetActive(false);
+                HintSeven.SetActive(false);
                 break;
             case 6:
             HintOne.SetActive(false);
@@ -137,6 +146,16 @@ public class Settings : MonoBehaviour
             HintFour.SetActive(false);
                 HintFive.SetActive(false);
                 HintSix.SetActive(true);
+                HintSeven.SetActive(false);
+                break;
+            case 7:
+            HintOne.SetActive(false);
+            HintTwo.SetActive(false);
+            HintThree.SetActive(false);
+            HintFour.SetActive(false);
+                HintFive.SetActive(false);
+                HintSix.SetActive(false);
+                HintSeven.SetActive(true);
                 break;
         }
         }
@@ -145,6 +164,14 @@ public class Settings : MonoBehaviour
     }
     public void CloseHint()
     {
+        GameScreen.SetActive(true);
+        InventoryArrowUp.SetActive(true);
+        HintBackground.SetActive(false);
+    }
+
+    public void CloseHintIntro()
+    {
+        HintIntroBool = false;
         GameScreen.SetActive(true);
         InventoryArrowUp.SetActive(true);
         HintBackground.SetActive(false);

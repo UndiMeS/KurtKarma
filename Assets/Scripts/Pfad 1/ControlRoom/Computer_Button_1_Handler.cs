@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
@@ -19,6 +19,7 @@ public class Computer_Button_1_Handler : MonoBehaviour {
     public GameObject ControllRoomBackground;
     public GameObject FinalComputer;
     public GameObject FinalComputerBig;
+    public GameObject FinalEquation;
 
     public AudioSource DoorSound;
 
@@ -43,6 +44,8 @@ public class Computer_Button_1_Handler : MonoBehaviour {
     public GameObject FinalScreen;
     public bool IntroCheck;
 
+    public AudioSource Backgroundmusic;
+
     // public VideoPlayer WhiteNoiseOne;
     // public VideoPlayer WhiteNoiseTwo;
 
@@ -64,10 +67,24 @@ public class Computer_Button_1_Handler : MonoBehaviour {
     public GameObject TasseGross;
     public GameObject ZettelGross;
 
+    public GameObject InstructionBig;
+
     public Settings SettingScript;
+
+    public GameObject TransitionIn;
+    public float TransitionTime;
+    public GameObject TransitionOut;
+
+
+    
 
     // Start is called before the first frame update
     void Start () {
+
+        
+
+
+
         AllTitles.SetActive(true);
         Intro.SetActive(true);
         TitleOne.SetActive(false);
@@ -137,36 +154,37 @@ public class Computer_Button_1_Handler : MonoBehaviour {
     }
 
     public void ClickDemoStart(){
+        StartCoroutine(ClickDemoStartTransition());
+    }
+
+    public IEnumerator ClickDemoStartTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         Intro.SetActive(false);
         IntroVideoPlayer.Stop();
         Inventar.SetActive(true);
         ControlRoom.SetActive(true);
 
+        Backgroundmusic.Play();
 
-        // if (string.IsNullOrEmpty(urlNoise1))
-        // {
-        //     urlNoise1 = System.IO.Path.Combine(Application.streamingAssetsPath, "NoiseScreen1.1.mp4");
-        // }
-        // WhiteNoiseOne.url = urlNoise1;
-
-
-        
-
-
-
-        // if (string.IsNullOrEmpty(urlNoise2))
-        // {
-        //     urlNoise2 = System.IO.Path.Combine(Application.streamingAssetsPath, "NoiseScreen2.mp4");
-        // }
-        // WhiteNoiseTwo.url = urlNoise2;
-
-        // WhiteNoiseOne.Prepare();
-        // WhiteNoiseTwo.Prepare();
-        //StartCoroutine(TitleScreen());
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     public void ComputerScreen_1Click () {
 
+        StartCoroutine(ComputerScreen_1ClickTransition());
+
+    }
+    public IEnumerator ComputerScreen_1ClickTransition () {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        TransitionOut.SetActive(true);
         ControlRoom.SetActive (false);
         ComputerScreen_1.SetActive (true);
         ComputerScreen_1_2.SetActive (false);
@@ -178,9 +196,21 @@ public class Computer_Button_1_Handler : MonoBehaviour {
         DoorOpener.SetActive (false);
         PostIt.SetActive (false);
 
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
     }
 
     public void ComputerScreen_2Click () {
+        StartCoroutine(ComputerScreen_2ClickTransition());
+    }
+
+    public IEnumerator ComputerScreen_2ClickTransition() {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ControlRoom.SetActive (false);
         ComputerScreen_1.SetActive (false);
         ComputerScreen_1_2.SetActive (false);
@@ -191,9 +221,23 @@ public class Computer_Button_1_Handler : MonoBehaviour {
         ComputerScreen_6.SetActive (false);
         DoorOpener.SetActive (false);
         PostIt.SetActive (false);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     public void ComputerScreen_3Click () {
+        StartCoroutine(ComputerScreen_3ClickTransition());
+    }
+
+
+    
+    public IEnumerator ComputerScreen_3ClickTransition() {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ControlRoom.SetActive (false);
         ComputerScreen_1.SetActive (false);
         ComputerScreen_1_2.SetActive (false);
@@ -204,9 +248,24 @@ public class Computer_Button_1_Handler : MonoBehaviour {
         ComputerScreen_6.SetActive (false);
         DoorOpener.SetActive (false);
         PostIt.SetActive (false);
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
     }
 
+    
     public void ComputerScreen_4Click () {
+        StartCoroutine(ComputerScreen_4ClickTransition());
+    }
+
+    public IEnumerator ComputerScreen_4ClickTransition() {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ControlRoom.SetActive (false);
         ComputerScreen_1.SetActive (false);
         ComputerScreen_1_2.SetActive (false);
@@ -217,9 +276,22 @@ public class Computer_Button_1_Handler : MonoBehaviour {
         ComputerScreen_6.SetActive (false);
         DoorOpener.SetActive (false);
         PostIt.SetActive (false);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
     }
 
     public void ComputerScreen_5Click () {
+        StartCoroutine(ComputerScreen_5ClickTransition());
+    }
+
+    public IEnumerator ComputerScreen_5ClickTransition() {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ControlRoom.SetActive (false);
         ComputerScreen_1.SetActive (false);
         ComputerScreen_1_2.SetActive (false);
@@ -230,9 +302,22 @@ public class Computer_Button_1_Handler : MonoBehaviour {
         ComputerScreen_6.SetActive (false);
         DoorOpener.SetActive (false);
         PostIt.SetActive (false);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
     }
 
     public void ComputerScreen_6Click () {
+        StartCoroutine(ComputerScreen_6ClickTransition());
+    }
+
+     public IEnumerator ComputerScreen_6ClickTransition() {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ControlRoom.SetActive (false);
         ComputerScreen_1.SetActive (false);
         ComputerScreen_1_2.SetActive (false);
@@ -243,16 +328,74 @@ public class Computer_Button_1_Handler : MonoBehaviour {
         ComputerScreen_6.SetActive (true);
         DoorOpener.SetActive (false);
         PostIt.SetActive (false);
-    }
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
+     }
+
+    
 
     public void FinalComputerScreenClick(){
+        
+        StartCoroutine(FinalComputerScreenClickTransition());
+    }
+
+    public IEnumerator FinalComputerScreenClickTransition() {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ControllRoomBackground.SetActive (false);
         FinalComputerBig.SetActive(true);
         SettingScript.HintNumber = 6;
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
+    }
+
+
+    public void FinalTimeStop()
+    {
+        StartCoroutine(FinalTimeStopTransition());
+
+    }
+
+    public IEnumerator FinalTimeStopTransition()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+
+
+        FinalComputerBig.SetActive(false);
+        
+        FinalEquation.SetActive(true);
+        SettingScript.HintNumber = 7;
         OutroVideoPlayer.Prepare();
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
+
     }
 
     public void DoorOpener_Click () {
+        StartCoroutine(DoorOpener_ClickTransition());
+    }
+
+    public IEnumerator DoorOpener_ClickTransition(){
+
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ControlRoom.SetActive (false);
         ComputerScreen_1.SetActive (false);
         ComputerScreen_1_2.SetActive (false);
@@ -263,9 +406,22 @@ public class Computer_Button_1_Handler : MonoBehaviour {
         ComputerScreen_6.SetActive (false);
         DoorOpener.SetActive (true);
         PostIt.SetActive (false);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
     }
 
     public void BackButton () {
+        StartCoroutine(BackButtonTransition());
+    }
+
+    public IEnumerator BackButtonTransition() {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ControlRoom.SetActive (true);
         //Monitor_1_2.SetActive(false);
         ComputerScreen_1.SetActive (false);
@@ -278,6 +434,13 @@ public class Computer_Button_1_Handler : MonoBehaviour {
         TasseGross.SetActive(false);
         DoorOpener.SetActive (false);
         PostIt.SetActive (false);
+        InstructionBig.SetActive(false);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
+
     }
 
     public void QRMonitor_Click () {
@@ -310,29 +473,78 @@ public class Computer_Button_1_Handler : MonoBehaviour {
 
     public void ToJunkRoom () {
         //DoorSound.Play();
+        StartCoroutine(ToJunkRoomTransition());
+        
+    }
+
+    public IEnumerator ToJunkRoomTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ControlRoom.SetActive (false);
         JunkRoom.SetActive (true);
         PostIt.SetActive (false);
         InventoryDown.selected = true;
-        
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+
     }
     public void PostItClick () {
+        StartCoroutine(PostItClickTransition());
+    }
+    public IEnumerator PostItClickTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ControlRoom.SetActive (false);
         PostIt.SetActive (true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     public void TasseClick(){
+        StartCoroutine(TasseClickTransition());
+    }
+
+    public IEnumerator TasseClickTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ControlRoom.SetActive(false);
         TasseGross.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     public void ToPyramidRoom () {
+        StartCoroutine(ToPyramidRoomTransition());
+        
+    }
+
+    public IEnumerator ToPyramidRoomTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         DoorSound.Play();
         ControlRoom.SetActive (false);
         PyramidRoom.SetActive (true);
         PyramidRoomEmpty.SetActive(true);
         InventoryDown.selected = true;
-        
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     IEnumerator TitleScreen(){
@@ -364,6 +576,7 @@ public class Computer_Button_1_Handler : MonoBehaviour {
           Intro.SetActive(false);
           Inventar.SetActive(true);
           ControlRoom.SetActive(true);
+          Backgroundmusic.Play();
         //   WhiteNoiseOne.Prepare();
         //   WhiteNoiseTwo.Prepare();
       }
@@ -375,13 +588,56 @@ public class Computer_Button_1_Handler : MonoBehaviour {
 
       public void ToZettel()
       {
-          TasseGross.SetActive(false);
+          StartCoroutine(ToZettelTransition());
+      }
+      public IEnumerator ToZettelTransition(){
+
+          TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        TasseGross.SetActive(false);
           ZettelGross.SetActive(true);
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
       }
 
       public void BackToTasse()
       {
-          ZettelGross.SetActive(false);
+          StartCoroutine(BackToTasseTransition());
+      }
+
+      public IEnumerator BackToTasseTransition(){
+          TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        ZettelGross.SetActive(false);
           TasseGross.SetActive(true);
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+      }
+
+      public void InstructionClick(){
+          StartCoroutine(InstructionClickTransition());
+      }
+      public IEnumerator InstructionClickTransition(){
+          TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        InstructionBig.SetActive(true);
+          ControlRoom.SetActive(false);
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
       }
 }

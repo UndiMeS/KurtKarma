@@ -15,6 +15,8 @@ public class ScreenCodeAnalyse : MonoBehaviour
     public GameObject JunkDoorOpen;
 
     public GameObject GreenFrame;
+    public GameObject DiamondScreenSmall;
+    public GameObject DiamondScreenTrueSmall;
 
     public bool Correct;
     public Settings SettingScript;
@@ -41,6 +43,8 @@ public class ScreenCodeAnalyse : MonoBehaviour
             JunkDoorOpen.SetActive(true);
 
             GreenFrame.SetActive(true);
+            DiamondScreenSmall.SetActive(false);
+            DiamondScreenTrueSmall.SetActive(true);
 
             for(int x=0; x <5; x++)
             {

@@ -13,6 +13,10 @@ public class DiscSolution : MonoBehaviour
     public bool DiscTwoSolution;
     public bool DiscThreeSolution;
     public bool DiscFourSolution;
+
+    public float DiscThreeOneAngle;
+    public float DiscThreeTwoAngle;
+    public float DiscThreeThreeAngle;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +26,14 @@ public class DiscSolution : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(DiscOne[0].transform.rotation.z == DiscOne[1].transform.rotation.z )
+
+        DiscThreeOneAngle = DiscThree[0].transform.eulerAngles.z;
+        DiscThreeTwoAngle = DiscThree[1].transform.eulerAngles.z;
+        DiscThreeThreeAngle = DiscThree[2].transform.eulerAngles.z;
+
+
+
+        if(DiscOne[0].transform.eulerAngles.z == DiscOne[1].transform.eulerAngles.z )
         {
             DiscOneSolution = true;
         }
@@ -31,7 +42,7 @@ public class DiscSolution : MonoBehaviour
             DiscOneSolution = false;
         }
 
-                if(DiscTwo[0].transform.rotation.z == DiscTwo[1].transform.rotation.z)
+                if(DiscTwo[0].transform.eulerAngles.z == DiscTwo[1].transform.eulerAngles.z)
         {
             DiscTwoSolution = true;
         }
@@ -40,7 +51,7 @@ public class DiscSolution : MonoBehaviour
             DiscTwoSolution = false;
         }
 
-                if(DiscThree[0].transform.rotation.z == DiscThree[1].transform.rotation.z && DiscThree[2].transform.rotation.z == DiscThree[1].transform.rotation.z)
+                if(DiscThree[0].transform.eulerAngles.z == DiscThree[1].transform.eulerAngles.z && DiscThree[2].transform.eulerAngles.z == DiscThree[1].transform.eulerAngles.z)
         {
             DiscThreeSolution = true;
         }
@@ -49,7 +60,7 @@ public class DiscSolution : MonoBehaviour
             DiscThreeSolution = false;
         }
 
-                if(DiscFour[0].transform.rotation.z == DiscFour[1].transform.rotation.z && DiscFour[2].transform.rotation.z == DiscFour[1].transform.rotation.z)
+                if(DiscFour[0].transform.eulerAngles.z == DiscFour[1].transform.eulerAngles.z && DiscFour[2].transform.eulerAngles.z == DiscFour[1].transform.eulerAngles.z)
         {
             DiscFourSolution = true;
         }

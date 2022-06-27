@@ -23,6 +23,10 @@ public class SolutionNumberLine : MonoBehaviour
     public GameObject ControlRoom;
     public GameObject Inventar;
     public Timer TimerScript;
+    public GameObject FinalWindow;
+    public bool finalbool;
+
+    public AudioSource CorrectSound;
 
     //public AudioSource RichtigSound;
 
@@ -42,7 +46,14 @@ public class SolutionNumberLine : MonoBehaviour
            RedFrame.SetActive(false);
            GreenFrame.SetActive(true);
            //RichtigSound.Play();
-           StartCoroutine(OutroStart());
+           if(finalbool == false)
+           {
+               CorrectSound.Play();
+               FinalWindow.SetActive(true);
+               finalbool = true;
+           }
+           
+           
        }
     }
 
@@ -82,10 +93,15 @@ void OnTriggerExit2D(Collider2D collision)
     }
 }
 
+public void Wrapper()
+{
+    StartCoroutine(OutroStart());
+}
+
 IEnumerator OutroStart()
 {
 
-    //TimerScript.StopTime();
+    TimerScript.StopTime();
 
     yield return new WaitForSeconds(2);
     Inventar.SetActive(false);

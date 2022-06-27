@@ -156,7 +156,8 @@ public class ClickOnKey : MonoBehaviour
                     MayaDiscSound.clip = pocket;
                     this.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0);
                     Destroy(DiscAnimator);
-                    ItemSound.Play();
+                    //ItemSound.Play();
+                    MayaDiscSound.Play();
                 }
                 if(this.gameObject.name == "Schlüssel")
                 {
@@ -187,7 +188,7 @@ public class ClickOnKey : MonoBehaviour
                 {
                     this.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0);
                     Destroy(DiscAnimator);
-                    ItemSound.Play();
+                    //ItemSound.Play();
                 }
                 if(this.gameObject.name == "Schlüssel")
                 {

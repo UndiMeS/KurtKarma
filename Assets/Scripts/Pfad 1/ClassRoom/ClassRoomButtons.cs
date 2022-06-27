@@ -17,6 +17,10 @@ public class ClassRoomButtons : MonoBehaviour
     public InventarArrow InventoryDown;
     public GameObject InventoryArrowDown;
 
+    public GameObject TransitionIn;
+    public GameObject TransitionOut;
+    public float TransitionTime;
+
 
     // Start is called before the first frame update
     void Start()
@@ -42,24 +46,70 @@ public class ClassRoomButtons : MonoBehaviour
 
     public void ToPyramidRoom()
     {
+        StartCoroutine(ToPyramidRoomTransition());
+    }
+
+    public IEnumerator ToPyramidRoomTransition()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ClassRoom.SetActive(false);
         PyramidRoom.SetActive(true);
         PyramidRoomTotal.SetActive(true);
         InventoryDown.selected = true;
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     public void OpenCloset()
     {
+
         Closet.SetActive(false);
         ClosetDoor.SetActive(true);
+
+        //StartCoroutine(OpenClosetTransition());
         //ClosetSound.Play();
+    }
+
+    public IEnumerator OpenClosetTransition()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        Closet.SetActive(false);
+        ClosetDoor.SetActive(true);
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
     public void ClosetPortal()
     {
+        StartCoroutine(ClosetPortalTransition());
+    }
+
+    public IEnumerator ClosetPortalTransition()
+    {
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         ClassRoom.SetActive(false);
         SecretRoom.SetActive(true);
         InventoryDown.selected = true;
+
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
 }

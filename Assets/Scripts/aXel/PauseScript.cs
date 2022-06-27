@@ -80,6 +80,8 @@ public class PauseScript : MonoBehaviour
     public GameObject HelpFour;
 
     public Button NextLevelButton;
+
+    public AudioSource GameBackgroundMusik;
     // Start is called before the first frame update
 
 
@@ -371,6 +373,9 @@ public class PauseScript : MonoBehaviour
         InventoryArrowUp.SetActive(true);
 
         ArcadeRoom.SetActive(true);
+
+        //StartCoroutine(FadeIn(GameBackgroundMusik, 400.0f));
+        GameBackgroundMusik.Play();
     }
 
     public void ReallyQuit()
@@ -462,6 +467,11 @@ public class PauseScript : MonoBehaviour
         AxelGame.SetActive(false);
 
         ArcadeRoom.SetActive(true);
+
+        //StartCoroutine(FadeIn(GameBackgroundMusik, 400.0f));
+
+        GameBackgroundMusik.Play();
+
 
     }
 
@@ -621,6 +631,21 @@ public class PauseScript : MonoBehaviour
         }
  
         audioSource.Stop ();
+        audioSource.volume = startVolume;
+    }
+
+    public static IEnumerator FadeIn (AudioSource audioSource, float FadeTime) {
+        float startVolume = 0.001f;
+
+        audioSource.Play ();
+ 
+        while (audioSource.volume < 1) {
+            audioSource.volume += startVolume * Time.deltaTime / FadeTime;
+ 
+            yield return null;
+        }
+ 
+        
         audioSource.volume = startVolume;
     }
 
