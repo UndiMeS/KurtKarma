@@ -12,6 +12,14 @@ public class Computer_Button_1_Handler : MonoBehaviour {
     public GameObject ComputerScreen_4;
     public GameObject ComputerScreen_5;
     public GameObject ComputerScreen_6;
+
+    public GameObject ComputerScreen_1Button;
+    public GameObject ComputerScreen_1_2Button;
+    public GameObject ComputerScreen_2Button;
+    public GameObject ComputerScreen_3Button;
+    public GameObject ComputerScreen_4Button;
+    public GameObject ComputerScreen_5Button;
+    public GameObject ComputerScreen_6Button;
     public GameObject DoorOpener;
     public GameObject ControlRoom;
     public GameObject Monitor_1_1;
@@ -65,6 +73,9 @@ public class Computer_Button_1_Handler : MonoBehaviour {
     // public string urlNoise2;
 
     public GameObject TasseGross;
+    public GameObject TasseButton;
+    public GameObject PostItButton;
+    public GameObject Cube;
     public GameObject ZettelGross;
 
     public GameObject InstructionBig;
@@ -344,6 +355,20 @@ public class Computer_Button_1_Handler : MonoBehaviour {
     }
 
     public IEnumerator FinalComputerScreenClickTransition() {
+
+        PostIt.SetActive(false);
+        ComputerScreen_1Button.SetActive(false);
+        ComputerScreen_2Button.SetActive(false);
+        ComputerScreen_3Button.SetActive(false);
+        ComputerScreen_4Button.SetActive(false);
+        ComputerScreen_5Button.SetActive(false);
+        ComputerScreen_6Button.SetActive(false);
+        InventoryDown.selected = true;
+
+        FinalComputer.SetActive(false);
+        TasseButton.SetActive(false);
+        Cube.SetActive(false);
+
         TransitionIn.SetActive(true);
         yield return new WaitForSeconds(TransitionTime);
         TransitionIn.SetActive(false);

@@ -34,4 +34,4 @@ Material:
     - _Speed: 0
     m_Colors:
     - Vector2_2231B2F5: {r: 0.456, g: 0.74, b: 0, a: 0}
-    - _FocalPoint: {r: 0.49, g: 0.45, b: 0, a: 0}
+    - _FocalPoint: {r: 0.83, g: 0.615, b: 0, a: 0}

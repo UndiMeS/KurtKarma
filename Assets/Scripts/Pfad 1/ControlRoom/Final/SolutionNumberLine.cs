@@ -27,6 +27,7 @@ public class SolutionNumberLine : MonoBehaviour
     public bool finalbool;
 
     public AudioSource CorrectSound;
+    public AudioSource Backgroundmusic;
 
     //public AudioSource RichtigSound;
 
@@ -104,6 +105,7 @@ IEnumerator OutroStart()
     TimerScript.StopTime();
 
     yield return new WaitForSeconds(2);
+    Backgroundmusic.Stop();
     Inventar.SetActive(false);
     
 
