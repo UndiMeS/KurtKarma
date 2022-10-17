@@ -38,7 +38,8 @@ public class PlayerMovement : MonoBehaviour {
     public Vector3 StartPosition;
     public Quaternion StartRotation;
 
-    public GameObject[] NumbersEaten;
+    public GameObject[] NumbersEatenLeft;
+    public GameObject[] NumbersEatenRight;
 
     public BoxCollider2D UpButton;
     public BoxCollider2D RightButton;
@@ -98,9 +99,9 @@ public class PlayerMovement : MonoBehaviour {
 
 
 
-        NumbersEaten = GameObject.FindGameObjectsWithTag("aXelNumberLeft");
+        NumbersEatenLeft = GameObject.FindGameObjectsWithTag("aXelNumberLeft");
 
-        foreach(GameObject NumberEaten in NumbersEaten)
+        foreach(GameObject NumberEaten in NumbersEatenLeft)
         {
             if(NumberEaten.GetComponent<aXelNumber>().Eaten == true)
             {
@@ -113,9 +114,9 @@ public class PlayerMovement : MonoBehaviour {
             // animator.SetBool("Eat", false);
         }
 
-        NumbersEaten = GameObject.FindGameObjectsWithTag("aXelNumberRight");
+        NumbersEatenRight = GameObject.FindGameObjectsWithTag("aXelNumberRight");
 
-        foreach(GameObject NumberEaten in NumbersEaten)
+        foreach(GameObject NumberEaten in NumbersEatenRight)
         {
             if(NumberEaten.GetComponent<aXelNumber>().Eaten == true)
             {
@@ -146,6 +147,15 @@ public class PlayerMovement : MonoBehaviour {
         if(solution >= 10.0f && OneFinished == false)
         {
 
+            foreach(GameObject NumberEaten in NumbersEatenLeft)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
+        foreach(GameObject NumberEaten in NumbersEatenRight)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
             transform.Rotate(Vector3.forward * speed * Time.deltaTime);
             //rb.transform.rotation = Quaternion.Euler (0, 0, 90.0f);
 
@@ -153,6 +163,15 @@ public class PlayerMovement : MonoBehaviour {
 
         if(OneFinished == true && TwoFinished == false && solution <= -10.0f)
         {
+            foreach(GameObject NumberEaten in NumbersEatenLeft)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+        foreach(GameObject NumberEaten in NumbersEatenRight)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
 
             transform.Rotate(Vector3.forward * speed * Time.deltaTime);
 
@@ -160,6 +179,15 @@ public class PlayerMovement : MonoBehaviour {
 
         if(TwoFinished == true && solution >= 10.0f)
         {
+            foreach(GameObject NumberEaten in NumbersEatenLeft)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+        foreach(GameObject NumberEaten in NumbersEatenRight)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
 
             transform.Rotate(Vector3.forward * speed * Time.deltaTime);
 
