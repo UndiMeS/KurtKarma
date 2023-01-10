@@ -44,29 +44,7 @@ public class Timer : MonoBehaviour
         neededminutes = ((int) (t / 60) - (Settings.BlueBulbCount * 2 + Settings.RedBulbCount * 4)).ToString("D2");
 
 
-        // if(FinalTimer == true && PenaltiTimer == false && NeededTime == false)
-        // {
-        //         foreach(TMP_Text timertext in TimerText)
-        //     {
-        //         timertext.text = minutes + ":" + seconds;
-        //     }
-        // }
-
-        // if(FinalTimer == false && PenaltiTimer == true && NeededTime == false)
-        // {
-        //         foreach(TMP_Text timertext in TimerText)
-        //     {
-        //         timertext.text = penaltiminutes + ":00";
-        //     }
-        // }
-
-        // if(FinalTimer == false && PenaltiTimer == false && NeededTime == true)
-        // {
-        //         foreach(TMP_Text timertext in TimerText)
-        //     {
-        //         timertext.text = neededminutes + ":" + seconds;
-        //     }
-        // }
+       
         InventoryTime.text = minutes + ":" + seconds;
         FinalTime.text = minutes + ":" + seconds;
         FinalTimer.text = FinalMinutes + ":" + FinalSeconds;
@@ -74,20 +52,7 @@ public class Timer : MonoBehaviour
         NeededTime.text = NeededMinutes + ":" + FinalSeconds;
         
 
-        // if(FinalScreen != null)
-        // {
-        //     if(FinalScreen.activeSelf == true && final == false)
-        //     {
-                
-        //         final = true;
-        //     }
-            
-        // }
-
-        
-        
-
-
+       
     }
 
     public void StopTime()

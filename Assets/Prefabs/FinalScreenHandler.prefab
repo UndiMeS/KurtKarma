@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6622400450699814208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6622400450699814209}
+  - component: {fileID: 6622400450699814214}
+  - component: {fileID: 6622400450699814215}
+  m_Layer: 0
+  m_Name: FinalScreenHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6622400450699814209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622400450699814208}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.8161426, y: -2.5583577, z: 90}
+  m_LocalScale: {x: 0.006990047, y: 0.006990047, z: 0.006990047}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6622400450699814214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622400450699814208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e2cc8bba570da4abe076db082c49e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTime: 0
+  t: 0
+  minutes: 0
+  timer: {fileID: 6622400450699814215}
+  ScoreDone: {fileID: 0}
+  ScoreSuper: {fileID: 0}
+  ScoreCrazy: {fileID: 0}
+--- !u!114 &6622400450699814215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622400450699814208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a910fc18bc9c8f1408d4c7d08638d193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimerText: []
+  minutes: 
+  seconds: 
+  penaltiminutes: 
+  neededminutes: 
+  NeededMinutes: 
+  startTime: 0
+  t: 0
+  FinalMinutes: 
+  FinalSeconds: 
+  FinalScreen: {fileID: 0}
+  final: 0
+  finalminutes: 0
+  FinalTime: {fileID: 0}
+  InventoryTime: {fileID: 0}
+  FinalTimer: {fileID: 0}
+  PenaltiTimer: {fileID: 0}
+  NeededTime: {fileID: 0}
