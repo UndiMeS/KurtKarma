@@ -402,7 +402,7 @@ public class Computer_Button_1_Handler : MonoBehaviour {
         
         FinalEquation.SetActive(true);
         SettingScript.HintNumber = 7;
-        OutroVideoPlayer.Prepare();
+        //OutroVideoPlayer.Prepare();
 
         TransitionOut.SetActive(true);
         yield return new WaitForSeconds(TransitionTime);
