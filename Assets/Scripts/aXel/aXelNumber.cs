@@ -21,7 +21,7 @@ public class aXelNumber : MonoBehaviour
         Eaten = false;
         BoxCollider = this.GetComponent<BoxCollider2D>();
 
-        if(this.gameObject.GetComponent<TMP_Text>().text.Contains("x") && this.gameObject.GetComponent<TMP_Text>().text != "+x" && this.gameObject.GetComponent<TMP_Text>().text != "-x")
+        if(this.gameObject.GetComponent<TMP_Text>().text.Contains("X") && this.gameObject.GetComponent<TMP_Text>().text != "+X" && this.gameObject.GetComponent<TMP_Text>().text != "-X")
         {
 
             if(float.TryParse(this.gameObject.GetComponent<TMP_Text>().text.Substring(0, this.gameObject.GetComponent<TMP_Text>().text.Length - 1), out result))
@@ -34,7 +34,7 @@ public class aXelNumber : MonoBehaviour
         }
 
 
-        if(this.gameObject.GetComponent<TMP_Text>().text != "+x" && this.gameObject.GetComponent<TMP_Text>().text != "-x")
+        if(this.gameObject.GetComponent<TMP_Text>().text != "+X" && this.gameObject.GetComponent<TMP_Text>().text != "-X")
         {
 
              if(float.TryParse(this.gameObject.GetComponent<TMP_Text>().text, out result))
@@ -46,11 +46,11 @@ public class aXelNumber : MonoBehaviour
         
         }
 
-        if(this.gameObject.GetComponent<TMP_Text>().text == "+x")
+        if(this.gameObject.GetComponent<TMP_Text>().text == "+X")
         {
             variable = +1.0f;
         }
-        else if(this.gameObject.GetComponent<TMP_Text>().text == "-x")
+        else if(this.gameObject.GetComponent<TMP_Text>().text == "-X")
         {
             variable = -1.0f;
         }

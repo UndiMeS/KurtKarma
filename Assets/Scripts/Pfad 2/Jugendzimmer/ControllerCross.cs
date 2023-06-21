@@ -23,6 +23,9 @@ public class ControllerCross : MonoBehaviour
     public bool DownPress;
     public bool RightPress;
     public bool LeftPress;
+
+    public AudioSource ClickDown;
+    public AudioSource ClickUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,63 @@ public class ControllerCross : MonoBehaviour
     {
         if(this.gameObject.name == "TetrixController")
         {
+
+            if(Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                ClickDown.Play();
+                UpButton.GetComponent<ControllerClick>().pressed = true;
+                UpButton.GetComponent<ControllerClick>().selected = true;
+            }
+            else if(Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                ClickUp.Play();
+                UpButton.GetComponent<ControllerClick>().pressed = false;
+                UpButton.GetComponent<ControllerClick>().selected= false;
+            }
+            else if(Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                ClickDown.Play();
+                DownButton.GetComponent<ControllerClick>().pressed = true;
+                DownButton.GetComponent<ControllerClick>().selected = true;
+            }
+            else if(Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                ClickUp.Play();
+                DownButton.GetComponent<ControllerClick>().pressed = false;
+                DownButton.GetComponent<ControllerClick>().selected = false;
+            }
+            else if(Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                ClickDown.Play();
+                LeftButton.GetComponent<ControllerClick>().pressed = true;
+                LeftButton.GetComponent<ControllerClick>().selected = true;
+            }
+            else if(Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                ClickUp.Play();
+                LeftButton.GetComponent<ControllerClick>().pressed = false;
+                LeftButton.GetComponent<ControllerClick>().selected = false;
+            }
+            else if(Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                ClickDown.Play();
+                RightButton.GetComponent<ControllerClick>().pressed = true;
+                RightButton.GetComponent<ControllerClick>().selected = true;
+            }
+            else if(Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                ClickUp.Play();
+                RightButton.GetComponent<ControllerClick>().pressed = false;
+                RightButton.GetComponent<ControllerClick>().selected = false;
+            }
+            else
+            {
+                this.GetComponent<SpriteRenderer>().sprite = ButtonNotPressed;
+            }
+
+
+
+
             UpPress = UpButton.GetComponent<ControllerClick>().pressed;
             DownPress = DownButton.GetComponent<ControllerClick>().pressed;
             RightPress = RightButton.GetComponent<ControllerClick>().pressed;
@@ -47,6 +107,7 @@ public class ControllerCross : MonoBehaviour
         }
 
         
+
 
         if(UpPress == true)
         {

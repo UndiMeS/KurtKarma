@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class CheatCode : MonoBehaviour
@@ -33,7 +34,13 @@ public class CheatCode : MonoBehaviour
 
     public GameObject TresorOffen;
 
+    public Button BackButton;
+
     public bool Richtig;
+
+    public Settings SettingsScript;
+
+    public bool HintBoolOne;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +62,14 @@ public class CheatCode : MonoBehaviour
             GrüneLampe.SetActive(true);
             RoteLampe.SetActive(false);
             Tür.SetActive(true);
+
+            if(HintBoolOne == false)
+            {
+                SettingsScript.HintNumber = 4;
+                HintBoolOne = true;
+            }
+            
+
             }
 
             if(this.gameObject.name == "PinAnalyse" && ConfirmButton.GetComponent<ButtonConfirm>().selected == true)
@@ -63,6 +78,8 @@ public class CheatCode : MonoBehaviour
                 ConfirmButton.SetActive(false);
                 GreenButton.SetActive(true);
                 StartCoroutine(KorrektPasswort());
+
+            
 
             }
 
@@ -91,7 +108,9 @@ public class CheatCode : MonoBehaviour
     {
 
         GrünerRand.SetActive(true);
+        BackButton.interactable = false;
         yield return new WaitForSeconds(2);
+        BackButton.interactable = true;
         GrünerRand.SetActive(false);
         Passwort = ("");
 

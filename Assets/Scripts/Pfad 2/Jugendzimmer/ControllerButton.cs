@@ -14,6 +14,8 @@ public class ControllerButton : MonoBehaviour
     public Sprite Pressed;
 
     public CheatCode PasswortAnalyse;
+    public AudioSource ControllerClickDown;
+    public AudioSource ControllerClickUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,8 @@ public class ControllerButton : MonoBehaviour
     {
         if(Input.GetMouseButtonUp (0)){
             selected = false;
+            
+            
         }
 
 
@@ -33,6 +37,7 @@ public class ControllerButton : MonoBehaviour
             if(Button != null)
             {
                 Button.GetComponent<SpriteRenderer>().sprite = Pressed;
+                
             }
             
         }
@@ -40,6 +45,7 @@ public class ControllerButton : MonoBehaviour
         {
             if(Button != null)
             {
+                
                 Button.GetComponent<SpriteRenderer>().sprite = NotPressed;
             }
             
@@ -52,7 +58,7 @@ public class ControllerButton : MonoBehaviour
 
         if (Input.GetMouseButtonDown (0)) {
             
-            
+            ControllerClickDown.Play();
             selected = true;
 
             if(this.gameObject.tag == "SNESController")
@@ -63,6 +69,10 @@ public class ControllerButton : MonoBehaviour
 
 
 
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            ControllerClickUp.Play();
         }
 
     }

@@ -20,6 +20,11 @@ public class AtellierButtonManager : MonoBehaviour
     public GameObject TresorOpen;
 
     public GameObject SafeClosed;
+    public InventarArrow InventoryDown;
+
+    public GameObject TransitionIn;
+    public GameObject TransitionOut;
+    public float TransitionTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,44 +39,131 @@ public class AtellierButtonManager : MonoBehaviour
 
     public void DoorToTeenageRoom()
     {
-        Atelier.SetActive(false);
-        TeenageRoom.SetActive(true);
-        
-        TeenageRoomEmpty.SetActive(true);
+        StartCoroutine(ToTeenageRoomTransition());
     }
 
     public void ClickLeftPainting()
     {
-        AtelierEmpty.SetActive(false);
-        LeftPainting.SetActive(true);
+        StartCoroutine(ToLeftPictureTransition());
     }
 
     public void ClickMiddlePainting()
     {
-        AtelierEmpty.SetActive(false);
-        MiddlePainting.SetActive(true);
+        StartCoroutine(ToMiddlePictureTransition());
     }
 
     public void ClickRightPainting()
     {
-        AtelierEmpty.SetActive(false);
-        RightPainting.SetActive(true);
+        StartCoroutine(ToRightPictureTransition());
     }
 
     public void ClickSafe()
     {
-        AtelierEmpty.SetActive(false);
-        SafeClosed.SetActive(true);
+        StartCoroutine(ToSafeTransition());
     }
 
     public void ClickSafeOpen()
     {
-        AtelierEmpty.SetActive(false);
-        TresorOpen.SetActive(true);
+        StartCoroutine(ToSafeOpenTransition());
     }
 
     public void BackToAtelier()
     {
+        StartCoroutine(BackToAtelierTransition());
+        
+    }
+
+    public void ClickOnNote()
+    {
+        StartCoroutine(ToNoteTransition());
+    }
+
+    public IEnumerator ToTeenageRoomTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        InventoryDown.selected = true;
+        Atelier.SetActive(false);
+        TeenageRoom.SetActive(true);
+        
+        TeenageRoomEmpty.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToLeftPictureTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        AtelierEmpty.SetActive(false);
+        LeftPainting.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToMiddlePictureTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        AtelierEmpty.SetActive(false);
+        MiddlePainting.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToRightPictureTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        AtelierEmpty.SetActive(false);
+        RightPainting.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToSafeTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        AtelierEmpty.SetActive(false);
+        SafeClosed.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToSafeOpenTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        AtelierEmpty.SetActive(false);
+        TresorOpen.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator BackToAtelierTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         LeftPainting.SetActive(false);
         MiddlePainting.SetActive(false);
         RightPainting.SetActive(false);
@@ -79,11 +171,22 @@ public class AtellierButtonManager : MonoBehaviour
         TresorOpen.SetActive(false);
         HintNote.SetActive(false);
         AtelierEmpty.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
-    public void ClickOnNote()
-    {
+    public IEnumerator ToNoteTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         AtelierEmpty.SetActive(false);
         HintNote.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 }

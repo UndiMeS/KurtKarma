@@ -19,10 +19,14 @@ public class FinalSolution : MonoBehaviour
     public Sprite Pressed;
 
     public GameObject Wrong;
+    public GameObject IkosaederBigColored;
+    public GameObject IkosaederBigWhite;
+    public GameObject ButtonCorrect;
 
     //public  Default;
 
     public bool Correct;
+    public Settings SettingsScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +38,14 @@ public class FinalSolution : MonoBehaviour
     {
         if(Correct == true)
         {
-            NirvanaEmpty.SetActive(false);
-            PasswordScreen.SetActive(false);
-            NirvanaEmptyBlack.SetActive(true);
+            //NirvanaEmpty.SetActive(false);
+            //PasswordScreen.SetActive(false);
+            //NirvanaEmptyBlack.SetActive(true);
+            IkosaederBigWhite.SetActive(false);
+            IkosaederBigColored.SetActive(true);
+            ButtonCorrect.SetActive(true);
+            Wrong.SetActive(false);
+            this.gameObject.SetActive(false);
         }   
 
         if(Input.GetMouseButtonUp (0)){
@@ -75,6 +84,7 @@ public class FinalSolution : MonoBehaviour
             if(InputFieldUp.GetComponent<TMP_InputField>().text == "9" && InputFieldDown.GetComponent<TMP_InputField>().text == "2")
             {
                 Correct = true;
+                SettingsScript.HintNumber = 6;
             }
             else
             {

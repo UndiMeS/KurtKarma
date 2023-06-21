@@ -8,11 +8,9 @@ public class KeySolution : MonoBehaviour
     public bool ChestColliderExit;
     public GameObject OpenChest;
     public GameObject ClosedChest;
-    public AudioSource KeySound;
+
     public GameObject Key;
     public GameObject KeyFinalParent;
-
-    public bool KeyInPlace = false;
     // Start is called before the first frame update
     void Start () { 
         OpenChest.SetActive(false);
@@ -23,22 +21,16 @@ public class KeySolution : MonoBehaviour
         if (ChestColliderEnter == true && Key.GetComponent<ClickOnKey> ().selected == false) {
             GameObject.Find("ItemPlace_1").GetComponent<ItemPlace>().ItemListStart = false;
             GameObject.Find("ItemPlace_2").GetComponent<ItemPlace>().ItemListStart = false;
-
             GameObject.Find("ItemPlace_1").GetComponent<ItemPlace>().ItemListStartOne = false;
             GameObject.Find("ItemPlace_2").GetComponent<ItemPlace>().ItemListStartOne = false;
-
             GameObject.Find("ItemPlace_1").GetComponent<ItemPlace>().ItemListStartTwo = false;
             GameObject.Find("ItemPlace_2").GetComponent<ItemPlace>().ItemListStartTwo = false;
-
             GameObject.Find("ItemPlace_1").GetComponent<ItemPlace>().fullOne = false;
             GameObject.Find("ItemPlace_2").GetComponent<ItemPlace>().fullTwo = false;
-
             GameObject.Find("ItemPlace_2").GetComponent<ItemPlace>().fullOne = false;
             GameObject.Find("ItemPlace_1").GetComponent<ItemPlace>().fullTwo = false;
-
             GameObject.Find("ItemPlace_2").GetComponent<ItemPlace>().DragItemOne = false;
             GameObject.Find("ItemPlace_1").GetComponent<ItemPlace>().DragItemTwo = false;
-
             Key.GetComponent<ClickOnKey> ().DragOne = false;
             Key.GetComponent<ClickOnKey> ().DragTwo = false;
             Key.transform.position = this.transform.position;
@@ -48,10 +40,8 @@ public class KeySolution : MonoBehaviour
             Key.transform.parent = KeyFinalParent.transform;
 
             Destroy(Key.gameObject);
-            KeyInPlace = true;
 
             OpenChest.SetActive(true);
-            KeySound.Play();
             ClosedChest.SetActive(false);
             
         }

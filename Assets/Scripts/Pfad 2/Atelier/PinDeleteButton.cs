@@ -11,6 +11,7 @@ public class PinDeleteButton : MonoBehaviour
 
     public Sprite NotPressed;
     public Sprite Pressed;
+    public AudioSource PinSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +48,7 @@ public class PinDeleteButton : MonoBehaviour
 
         if (Input.GetMouseButtonDown (0)) {
             
-            
+            PinSound.Play();
             selected = true;
             PasswortAnalyse.Passwort = null;
 

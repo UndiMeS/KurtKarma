@@ -23,6 +23,7 @@ public class LevelThreeWin : MonoBehaviour
     public GameObject BrickTwo_2;
 
      public GameObject Controller;
+     public ControllerCross KeyboardController;
     public GameObject[] Highlights;
 
     public float aValue;
@@ -66,7 +67,7 @@ public class LevelThreeWin : MonoBehaviour
     void Update()
     {
 
-        if(this.gameObject.active == true)
+        if(this.gameObject.activeSelf == true)
         {
             foreach (GameObject Hightlight in Highlights)
             {
@@ -105,6 +106,7 @@ public class LevelThreeWin : MonoBehaviour
     {
         if(winning == true)
         {
+            
             foreach (GameObject Highlight in Highlights)
             {
                 if(Highlight != null)
@@ -127,9 +129,13 @@ public class LevelThreeWin : MonoBehaviour
                 }
             }
 
+            KeyboardController.enabled = false;
+
             yield return new WaitForSeconds(blinktime);
             winning = false;
             LevelThreeClear = true;
+
+            KeyboardController.enabled = true;
 
             foreach (GameObject SolutionBackground in SolutionBackgrounds)
             {

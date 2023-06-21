@@ -26,7 +26,7 @@ public class OnClickOutline : MonoBehaviour
         MaterialColor = M_material.GetColor("_OutlineColor");
 
         Outlinecolor = new Color32((byte)(MaterialColor.r * 255), (byte)(MaterialColor.g * 255), (byte)(MaterialColor.b * 255), (byte)255);
-        //M_material.SetColor("_OutlineColor", new Color32((byte) 0, (byte) 0, (byte) 0, (byte) 0));
+        M_material.SetColor("_OutlineColor", new Color32((byte) 0, (byte) 0, (byte) 0, (byte) 0));
 
         
     }

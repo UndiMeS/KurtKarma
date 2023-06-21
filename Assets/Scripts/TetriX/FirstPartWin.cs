@@ -25,6 +25,7 @@ public class FirstPartWin : MonoBehaviour
     public GameObject BrickTwo_2;
 
      public GameObject Controller;
+     public ControllerCross KeyboardController;
     public GameObject[] Highlights;
 
     public float aValue;
@@ -79,7 +80,7 @@ public class FirstPartWin : MonoBehaviour
     void Update()
     {
 
-        if(this.gameObject.active == true && restart == true)
+        if(this.gameObject.activeSelf == true && restart == true)
         {
             
             foreach (GameObject Hightlight in Highlights)
@@ -118,6 +119,7 @@ public class FirstPartWin : MonoBehaviour
     {
         if(winning == true && blink == true)
         {
+            //KeyboardController.enabled = false;
             foreach (GameObject Highlight in Highlights)
             {
                 if(Highlight != null)
@@ -140,9 +142,13 @@ public class FirstPartWin : MonoBehaviour
                 }
             }
 
+            KeyboardController.enabled = false;
+
             yield return new WaitForSeconds(blinktime);
             winning = false;
             blink = false;
+
+            KeyboardController.enabled = true;
             
             //LevelThreeClear = true;
 

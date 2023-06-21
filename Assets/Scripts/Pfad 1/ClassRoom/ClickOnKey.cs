@@ -25,15 +25,6 @@ public class ClickOnKey : MonoBehaviour
 
     public Color Outlinecolor;
 
-    public AudioSource ItemSound;
-
-    public Animator DiscAnimator;
-
-    AudioSource MayaDiscSound;
-
-    public AudioClip pocket;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -45,9 +36,6 @@ public class ClickOnKey : MonoBehaviour
 
         Outlinecolor = new Color32((byte)255, (byte)255, (byte)0, (byte)255);
         M_material.SetColor("_OutlineColor", new Color32((byte) 0, (byte) 0, (byte) 0, (byte) 0));
-    
-        MayaDiscSound = this.gameObject.GetComponent<AudioSource>();  
-
     }
 
     // Update is called once per frame
@@ -56,7 +44,6 @@ public class ClickOnKey : MonoBehaviour
 
         InItemBarOne = ItemPlaceOne.GetComponent<ItemPlace>().fullOne;
         InItemBarTwo = ItemPlaceTwo.GetComponent<ItemPlace>().fullTwo;
-
         ItemBarStartOne = ItemPlaceOne.GetComponent<ItemPlace>().ItemListStart;
         ItemBarStartTwo = ItemPlaceTwo.GetComponent<ItemPlace>().ItemListStart;
 
@@ -87,17 +74,6 @@ public class ClickOnKey : MonoBehaviour
                 // }
         }
 
-        if(ItemBarStartOne == false && InItemBar == true && InItemBarOne == false && selected == false)
-        {
-            
-            
-            this.gameObject.transform.position = new Vector3(ItemPlaceOne.transform.position.x, ItemPlaceOne.transform.position.y, -1.0f);
-            ItemBarStartOne = true;
-            DragTwo = false;
-            InItemBarTwo = false;
-            DragOne = true;
-        }
-
 
         if(DragOne == true && selected == true || DragTwo == true && selected == true)
         {
@@ -121,7 +97,6 @@ public class ClickOnKey : MonoBehaviour
             // ItemPlaceOne.GetComponent<BoxCollider2D>().enabled = true;
             this.gameObject.transform.position = new Vector3(ItemPlaceTwo.transform.position.x, ItemPlaceTwo.transform.position.y, -1.0f);
         }
-
         else if(selected == false && DragOne == true && InItemBarTwo == true )
         {
             // ItemPlaceOne.GetComponent<BoxCollider2D>().enabled = true;
@@ -129,12 +104,6 @@ public class ClickOnKey : MonoBehaviour
             this.gameObject.transform.position = new Vector3(ItemPlaceOne.transform.position.x, ItemPlaceOne.transform.position.y, -1.0f);
             //InItemBarOne = false;
             //ItemBarStart = false;
-        }
-        else if(selected == true && DragTwo == false && InItemBarTwo == true && InItemBarOne == false  && DragOne == false)
-        {
-            // ItemPlaceTwo.GetComponent<BoxCollider2D>().enabled = true;
-            // ItemPlaceOne.GetComponent<BoxCollider2D>().enabled = true;
-            this.gameObject.transform.position = new Vector3(ItemPlaceOne.transform.position.x, ItemPlaceOne.transform.position.y, -1.0f);
         }
 
 
@@ -149,25 +118,14 @@ public class ClickOnKey : MonoBehaviour
                 if(InItemBarOne == false && DragOne == false && InItemBarTwo == false && selected == true)
                 {
                 this.gameObject.transform.position = new Vector3(ItemPlaceOne.transform.position.x, ItemPlaceOne.transform.position.y, -1.0f);
-                
 
                 if(this.gameObject.name == "Maya Teller")
                 {
-                    MayaDiscSound.clip = pocket;
                     this.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0);
-                    Destroy(DiscAnimator);
-                    //ItemSound.Play();
-                    MayaDiscSound.Play();
                 }
                 if(this.gameObject.name == "Schlüssel")
                 {
                     this.gameObject.transform.localScale = new Vector3(50.0f, 50.0f, 0);
-                    ItemSound.Play();
-                }
-                if(this.gameObject.name == "Münze")
-                {
-                    this.gameObject.transform.localScale = new Vector3(1.20f, 1.20f, 0);
-                    ItemSound.Play();
                 }
                 
                 this.gameObject.transform.parent = ItemPlaceOne.transform;
@@ -187,18 +145,10 @@ public class ClickOnKey : MonoBehaviour
                  if(this.gameObject.name == "Maya Teller")
                 {
                     this.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0);
-                    Destroy(DiscAnimator);
-                    //ItemSound.Play();
                 }
                 if(this.gameObject.name == "Schlüssel")
                 {
                     this.gameObject.transform.localScale = new Vector3(50.0f, 50.0f, 0);
-                    ItemSound.Play();
-                }
-                if(this.gameObject.name == "Münze")
-                {
-                    this.gameObject.transform.localScale = new Vector3(1.20f, 1.20f, 0);
-                    ItemSound.Play();
                 }
                 this.gameObject.transform.parent = ItemPlaceTwo.transform;
                 sprite.sortingOrder = sortingorder;

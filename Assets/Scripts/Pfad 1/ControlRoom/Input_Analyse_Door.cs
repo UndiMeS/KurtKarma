@@ -31,25 +31,6 @@ public class Input_Analyse_Door : MonoBehaviour
     public bool CorrectPw = false;
 
     public bool DoorOpen;
-
-    public GameObject BackButton;
-    public Settings SettingScript;
-
-    public GameObject DevilButton;
-    public GameObject HellExitLeft;
-    public GameObject HellExitRight;
-    public GameObject PartyButton;
-    public GameObject Konfetti;
-
-    public bool hell;
-    public bool party;
-
-
-    public GameObject TransitionIn;
-    public GameObject TransitionOut;
-    public float TransitionTime;
-
-    //public AudioSource RichtigSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,8 +43,6 @@ public class Input_Analyse_Door : MonoBehaviour
     void Update()
     {
         string code1 = Input_1.GetComponent<TMP_InputField>().text;
-        string code2 = Input_2.GetComponent<TMP_InputField>().text;
-        string code3 = Input_3.GetComponent<TMP_InputField>().text;
 
         TextMeshProUGUI TMPtext = TextObject.GetComponent<TextMeshProUGUI>();
 
@@ -71,34 +50,60 @@ public class Input_Analyse_Door : MonoBehaviour
         Inputfield1 = Input_1.GetComponent<TMP_InputField>();
         //Inputfield1.alignment = TextAlignment.Left;
 
-        // if(code1.Length > 2)
-        // {
+        if(code1.Length > 2)
+        {
             //TMPtext.SetText("<mspace = 200.0em>" + code1 + "</mspace>");
-            if(code1 != null && code2 != null && code3 != null)
-            {
-                if(code1 == "2" && code2 == "5" && code3 == "1")
-                {
-                    CorrectPw = true;
-                    DoorOpen = false;
+            if(code1[0] == '2' && code1[1] == '5' && code1[2] == '1')
+        {
+             CorrectPw = true;
+                DoorOpen = false;
 
-                    }
-                    else if(code1 == "6" && code2 == "6" && code3 == "6")
-                    {
-                        hell = true;
-                    }
-                    else if(code1 == "0" && code2 == "4" && code3 == "2")
-                    {
-                        party = true;
-                    }
-                else
-                {
-                    CorrectPw = false;
-                    hell = false;
-                    party = false;
-                }
             }
-            
+            else
+            {
+                CorrectPw = false;
+            }
+        }
 
+        
+            //confirm();
+        
+
+
+        
+
+        // if(code1.Length == 1)
+        // {
+        //     Inputfield2.Select();
+        //     Inputfield2.ActivateInputField();
+        // }
+
+        // if(code2.Length == 1)
+        // {
+        //     Inputfield3.Select();
+        //     Inputfield3.ActivateInputField();
+        // }
+
+        // if(code3.Length == 1)
+        // {
+        //     Inputfield1.Select();
+        //     Inputfield1.ActivateInputField();
+        // }
+
+
+            // if(code1 == "2" && code2 == "5" && code3 == "1" && DoorOpen == false)
+            // {
+            //     CorrectPw = true;
+            //     DoorOpen = false;
+
+            // }
+            // else
+            // {
+            //     CorrectPw = false;
+            // }
+            // //confirm();
+
+        
     }
 
     public void confirm()
@@ -108,13 +113,11 @@ public class Input_Analyse_Door : MonoBehaviour
 
 
             CorrectButton.SetActive(true);
-            //RichtigSound.Play();
-            BackButton.GetComponent<Button>().interactable = false;
             StartCoroutine(WaitAndConfirm(WaitTime));
 
             
         }
-        else if(CorrectPw == false && hell == false && party == false)
+        else if(CorrectPw == false)
         {
 
             ErrorButton.SetActive(true);
@@ -122,20 +125,22 @@ public class Input_Analyse_Door : MonoBehaviour
             
 
         }
-        else if(CorrectPw == false && hell == true && party == false)
-        {
-            DevilButton.SetActive(true);
-            hell = false;
-            StartCoroutine(HellWait(WaitTime));
-        }
-        else if(CorrectPw == false && party == true && hell == false)
-        {
-            PartyButton.SetActive(true);
-            party = false;
-            StartCoroutine(PartyWait(WaitTime));
-        }
     }
 
+    // IEnumerator WaitAndConfirm(float waitTime)
+    // {
+    //     yield return new WaitForSeconds(waitTime);
+    //     ComputerScreen_1.SetActive(false);
+    //     ComputerScreen_1_2.SetActive(true);
+    //     Debug.Log("confirm");
+    // }
+
+    // IEnumerator ErrorWait(float waitTime)
+    // {
+    //     yield return new WaitForSeconds(waitTime);
+    //     ConfirmButton.SetActive(true);
+    //     ErrorButton.SetActive(false);
+    // }
 
 
     IEnumerator WaitAndConfirm(float waitTime)
@@ -145,29 +150,16 @@ public class Input_Analyse_Door : MonoBehaviour
         // ComputerScreen_1_2.SetActive(true);
         //Debug.Log("confirm");
 
-        TransitionIn.SetActive(true);
-        yield return new WaitForSeconds(TransitionTime);
-        TransitionIn.SetActive(false);
-
-        RedCodeDoor.SetActive(false);
+        
+            //PyramidRoom.SetActive(true);
+            RedCodeDoor.SetActive(false);
             GreenCodeDoor.SetActive(true);
             DoorCode.SetActive(false);
             ControlRoomPic.SetActive(true);
             //ControlRoom.SetActive(true);
 
-            SettingScript.HintNumber = 4;
-
             CorrectPw = false;
             DoorOpen = true;
-
-
-        TransitionOut.SetActive(true);
-        yield return new WaitForSeconds(TransitionTime);
-        TransitionOut.SetActive(false);
-
-        
-            //PyramidRoom.SetActive(true);
-            
     }
 
     IEnumerator ErrorWait(float waitTime)
@@ -178,24 +170,27 @@ public class Input_Analyse_Door : MonoBehaviour
         // ErrorButton.SetActive(false);
     }
 
-    IEnumerator HellWait(float waitTime)
-    {
-        HellExitLeft.SetActive(true);
-        HellExitRight.SetActive(true);
-        yield return new WaitForSeconds(waitTime);
-        //hell = false;
-        DevilButton.SetActive(false);
+    // public void FieldOneEnd()
+    // {
+
+    //     string code1 = Input_1.GetComponent<TMP_InputField>().text;
         
-    }
+    //     if(code1.Length == 1)
+    //     {
+    //     Inputfield2.Select();
+    //     Inputfield2.ActivateInputField();
+    //     }
 
-    IEnumerator PartyWait(float waitTime)
-    {
-        Konfetti.SetActive(true);
-        yield return new WaitForSeconds(waitTime);
-        //party = false;
-        PartyButton.SetActive(false);
-        
-    }
+    // }
 
+    // public void FieldTwoEnd()
+    // {
+    //     string code2 = Input_2.GetComponent<TMP_InputField>().text;
+    //     if(code2.Length == 1)
+    //     {
+    //     Inputfield3.Select();
+    //     Inputfield3.ActivateInputField();
+    //     }
 
+    // }
 }
