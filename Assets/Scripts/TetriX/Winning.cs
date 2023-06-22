@@ -5,6 +5,7 @@ using UnityEngine;
 public class Winning : MonoBehaviour
 {
     public GameObject Controller;
+    public ControllerCross KeyboardController;
     public GameObject[] Highlights;
     public GameObject LevelTwo;
     public GameObject LevelOne;
@@ -109,6 +110,7 @@ public class Winning : MonoBehaviour
         {
             Debug.Log("Level One Clear");
             Controller.SetActive(false);
+            KeyboardController.enabled = false;
 
             foreach (GameObject SolutionBackground in SolutionBackgrounds)
             {

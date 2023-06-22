@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SolutionNumbers : MonoBehaviour {
     public float NumbersSolution;
@@ -35,30 +34,15 @@ public class SolutionNumbers : MonoBehaviour {
     public GameObject Particles;
     public bool PlayParticle = true;
 
-    public float rotationSpeed = 10.0f;
+    public float rotationSpeed = 50.0f;
 
 
     public GameObject Pause;
-
-    public SpriteRenderer SolutionSprite;
-    public Sprite SolutionQ;
-    public Sprite SolutionEmpty;
-
-    public GameObject[] Buttons;
-    public GameObject PauseButton;
-
-    public AudioSource XBertTeleport;
-
-    public int WinCount = 0;
-
-    bool BoolSpace;
 
     Vector3 destination = new Vector3 (0, 0, 359);
     // Start is called before the first frame update
     void Start () {
         //Particles.GetComponent<ParticleSystem>().Stop();
-
-        BoolSpace = Pause.GetComponent<PauseScript>().SpaceBool;
     }
 
     // Update is called once per frame
@@ -69,20 +53,16 @@ public class SolutionNumbers : MonoBehaviour {
         }
 
         if (VariableSolution == 0 && NumbersSolution == 0) {
-            GetComponent<TMP_Text> ().text = "";
-            SolutionSprite.sprite = SolutionQ;
+            GetComponent<TMP_Text> ().text = "L = Q";
         }
         if (VariableSolution == 0 && NumbersSolution != 0) {
-            GetComponent<TMP_Text> ().text = "";
-            SolutionSprite.sprite = SolutionEmpty;
+            GetComponent<TMP_Text> ().text = "Leere Menge";
         }
         if (VariableSolution != 0 && NumbersSolution != 0) {
-            GetComponent<TMP_Text> ().text = "x = " + Solution.ToString ();
-            SolutionSprite.sprite = null;
+            GetComponent<TMP_Text> ().text = "L = " + Solution.ToString ();
         }
         if (VariableSolution != 0 && NumbersSolution == 0) {
-            GetComponent<TMP_Text> ().text = "x = " + Solution.ToString ();
-            SolutionSprite.sprite = null;
+            GetComponent<TMP_Text> ().text = "L = " + Solution.ToString ();
         }
         // if(Solution >= 10.0f && LevelOneFinished == false)
         // {
@@ -109,20 +89,6 @@ public class SolutionNumbers : MonoBehaviour {
         // }
 
 
-        // if(Solution >= 10.0f)
-        // {
-        //     while(Pause.GetComponent<PauseScript> ().CompleteOne == false)
-        //     {
-        //         Xbert.transform.Rotate(Vector3.forward * speed * Time.deltaTime);
-        //     }
-            
-
-        //     //Xbert.GetComponent<Rigidbody2D>().AddTorque(10 * Time.deltaTime* rotationSpeed);
-        // }
-
-        
-
-
         StartCoroutine (WinningTime ());
 
     }
@@ -131,26 +97,7 @@ public class SolutionNumbers : MonoBehaviour {
 
         if (Solution >= 10.0f && LevelOneFinished == false) {
 
-            Pause.GetComponent<PauseScript>().SpaceBool = false;
             LevelOneFinished = true;
-
-            PauseButton.GetComponent<Button>().interactable = false;
-
-            foreach (GameObject Button in Buttons)
-            {
-                Button.SetActive(false);
-            }
-            PauseButton.GetComponent<Button>().interactable = false;
-            XBertTeleport.Play();
-            
-
-
-            //Xbert.transform.Rotate(Vector3.forward * speed * Time.deltaTime);
-
-            // Xbert.GetComponent<Animator>().applyRootMotion = false;
-
-            // Xbert.GetComponent<Animator>().SetBool("SpinTrigger", true);
-
 
             yield return new WaitForSeconds (1.0f);
 
@@ -161,15 +108,9 @@ public class SolutionNumbers : MonoBehaviour {
                 PlayParticle = false;
             }
 
-
-            // Xbert.GetComponent<Animator>().SetBool("SpinTrigger", false);
-            // Xbert.GetComponent<Animator>().applyRootMotion = true;
-
-            Xbert.SetActive (false);
-
             yield return new WaitForSeconds (0.5f);
 
-
+            Xbert.SetActive (false);
 
             Pause.GetComponent<PauseScript> ().CompleteOne = true;
 
@@ -181,14 +122,6 @@ public class SolutionNumbers : MonoBehaviour {
             LevelOne.SetActive (false);
             LevelOneComplete.SetActive (true);
 
-            Particles.GetComponent<ParticleSystem> ().Stop ();
-
-            foreach (GameObject Button in Buttons)
-            {
-                Button.SetActive(true);
-            }
-            PauseButton.GetComponent<Button>().interactable = true;
-
             Solution = 0;
 
             spinOne = true;
@@ -197,24 +130,10 @@ public class SolutionNumbers : MonoBehaviour {
 
         }
 
-        if (LevelOneFinished == true && LevelTwoFinished == false && Solution <= -10.0f) {
+        if (LevelOneFinished == true && LevelTwoFinished == false && Solution < 0.0f) {
 
-            Pause.GetComponent<PauseScript>().SpaceBool = false;
+
             LevelTwoFinished = true;
-            
-
-            foreach (GameObject Button in Buttons)
-            {
-                Button.SetActive(false);
-            }
-            PauseButton.GetComponent<Button>().interactable = false;
-
-            XBertTeleport.Play();
-
-            // Xbert.GetComponent<Animator>().applyRootMotion = false;
-
-            // Xbert.GetComponent<Animator>().SetBool("SpinTrigger", true);
-
 
             yield return new WaitForSeconds (1.0f);
 
@@ -225,14 +144,9 @@ public class SolutionNumbers : MonoBehaviour {
                 PlayParticle = false;
             }
 
-            // Xbert.GetComponent<Animator>().SetBool("SpinTrigger", false);
-            // Xbert.GetComponent<Animator>().applyRootMotion = true;
-
-            Xbert.SetActive (false);
-
             yield return new WaitForSeconds (0.5f);
 
-            
+            Xbert.SetActive (false);
 
             Pause.GetComponent<PauseScript> ().CompleteTwo = true;
 
@@ -248,14 +162,6 @@ public class SolutionNumbers : MonoBehaviour {
 
             PlayParticle = true;
 
-            Particles.GetComponent<ParticleSystem> ().Stop ();
-
-            foreach (GameObject Button in Buttons)
-            {
-                Button.SetActive(true);
-            }
-            PauseButton.GetComponent<Button>().interactable = true;
-
             Solution =0;
             NumbersSolution = 0;
             VariableSolution = 0;
@@ -263,33 +169,9 @@ public class SolutionNumbers : MonoBehaviour {
 
         }
 
-        if (LevelTwoFinished == true && Solution >= 10.0f && WinCount == 0) {
-
-             WinCount = 1;
-             Pause.GetComponent<PauseScript>().SpaceBool = false;
+        if (LevelTwoFinished == true && Solution < -100.0f) {
 
             LevelThreeFinished = true;
-
-            foreach (GameObject Button in Buttons)
-            {
-                Button.SetActive(false);
-            }
-            PauseButton.GetComponent<Button>().interactable = false;
-
-            
-
-            
-
-            // Xbert.GetComponent<Animator>().applyRootMotion = false;
-
-            // Xbert.GetComponent<Animator>().SetBool("SpinTrigger", true);
-
-            for(int x = 0; x< 1; x++)
-            {
-                XBertTeleport.Play();
-            }
-
-            
 
             yield return new WaitForSeconds (1.0f);
 
@@ -300,18 +182,11 @@ public class SolutionNumbers : MonoBehaviour {
                 PlayParticle = false;
             }
 
-            // Xbert.GetComponent<Animator>().SetBool("SpinTrigger", false);
-            // Xbert.GetComponent<Animator>().applyRootMotion = true;
+            yield return new WaitForSeconds (0.5f);
 
             Xbert.SetActive (false);
 
-            yield return new WaitForSeconds (0.5f);
-
-            
-
             Pause.GetComponent<PauseScript> ().CompleteThree = true;
-
-            Solution = 0;
 
             yield return new WaitForSeconds (1.0f);
 
@@ -324,20 +199,9 @@ public class SolutionNumbers : MonoBehaviour {
             spinThree = true;
             PlayParticle = true;
 
-            Particles.GetComponent<ParticleSystem> ().Stop ();
-
-            foreach (GameObject Button in Buttons)
-            {
-                Button.SetActive(true);
-            }
-            PauseButton.GetComponent<Button>().interactable = true;
-
-           
-
 
         }
 
     }
-
 
 }

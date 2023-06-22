@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameComplete : MonoBehaviour
@@ -51,6 +52,8 @@ public class GameComplete : MonoBehaviour
     public GameObject[] MovePostions;
 
     public GameObject[] CurrentSolutions;
+
+    public Button PauseButton;
 
 
     // Start is called before the first frame update
@@ -191,6 +194,7 @@ public class GameComplete : MonoBehaviour
                 if(WindowFinish == false)
                 {
                     Congrats.SetActive(true);
+                    
                 }
 
 
@@ -202,6 +206,7 @@ public class GameComplete : MonoBehaviour
             
 
             CheatCode.SetActive(true);
+            PauseButton.interactable = false;
 
             if(BrickWindowOne.GetComponent<SelectBrickOne>().SelectFinished == false && BrickWindowTwo.GetComponent<SelectBrickTwo>().SelectFinished == false)
             {

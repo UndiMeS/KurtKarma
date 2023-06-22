@@ -14,6 +14,10 @@ public class ModulSolution : MonoBehaviour
 
     public GameObject ItemPlaceOne;
     public GameObject ItemPlaceTwo;
+    public AudioSource ModulSound;
+    public bool modulsoundplay;
+
+    public Settings SettingsScript;
     // Start is called before the first frame update
     void Start () { 
         ModulInside.SetActive(false);
@@ -46,6 +50,17 @@ public class ModulSolution : MonoBehaviour
 
             TetrixScreen.SetActive(true);
             ModulInside.SetActive(true);
+
+            
+
+
+            if(modulsoundplay == false)
+            {
+                ModulSound.Play();
+                modulsoundplay = true;
+
+                SettingsScript.HintNumber = 3;
+            }
             
         }
     }

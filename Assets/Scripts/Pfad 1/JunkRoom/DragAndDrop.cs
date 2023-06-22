@@ -31,11 +31,11 @@ public class DragAndDrop : MonoBehaviour {
 
         GameObject LeftCollider = GameObject.Find ("SilberSchaale Links");
 
-        SilverScaleLeft LeftScript = LeftCollider.GetComponent<SilverScaleLeft> ();
+        ScaleLeftDetection LeftScript = LeftCollider.GetComponent<ScaleLeftDetection> ();
 
         GameObject RightCollider = GameObject.Find ("SilberSchaale Rechts");
 
-        SilverScaleRight RightScript = RightCollider.GetComponent<SilverScaleRight> ();
+        ScaleRightDetection RightScript = RightCollider.GetComponent<ScaleRightDetection> ();
 
         if (selected == true && BallSnap == true) {
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);

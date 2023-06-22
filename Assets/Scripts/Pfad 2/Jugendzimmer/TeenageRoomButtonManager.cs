@@ -21,6 +21,7 @@ public class TeenageRoomButtonManager : MonoBehaviour
     public GameObject RadioFull;
     public GameObject Poster;
     public GameObject NoteSheetThree;
+    public GameObject PostIt;
 
     public GameObject CobainPoster_1;
     public GameObject CobainPoster_2;
@@ -29,6 +30,14 @@ public class TeenageRoomButtonManager : MonoBehaviour
     public GameObject CobainPoster_5;
     public GameObject CobainPoster_6;
     public GameObject CobainPoster_7;
+
+
+    public GameObject BigClock;
+    public InventarArrow InventoryDown;
+
+    public GameObject TransitionIn;
+    public GameObject TransitionOut;
+    public float TransitionTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,46 +52,204 @@ public class TeenageRoomButtonManager : MonoBehaviour
 
     public void DoorToPianoRoomClick()
     {
-        TeenageRoom.SetActive(false);
-        PianoRoom.SetActive(true);
+        StartCoroutine(ToPianoRoomTransition());
     }
 
     public void DoorToAtelier()
     {
-        TeenageRoom.SetActive(false);
-        Atelier.SetActive(true);
+        StartCoroutine(ToAtelieRoomTransition());
+        
     }
 
     public void PitendoControlerClick()
     {
-        TeenageRoomEmpty.SetActive(false);
-        TeenageRoomButtons.SetActive(false);
-        PitendoControler.SetActive(true);
+        StartCoroutine(ToPitendoControlerTransition());
+        
     }
 
     public void RadioClick()
     {
-        TeenageRoomEmpty.SetActive(false);
-        TeenageRoomButtons.SetActive(false);
-        Radio.SetActive(true);
+        StartCoroutine(ToRadioTransition());
+        
     }
 
     public void PosterClick()
     {
-        TeenageRoomEmpty.SetActive(false);
-        TeenageRoomButtons.SetActive(false);
-        Poster.SetActive(true);
+        StartCoroutine(ToPosterTransition());
+        
     }
 
     public void NoteSheetThreeClick()
     {
-        TeenageRoomEmpty.SetActive(false);
-        TeenageRoomButtons.SetActive(false);
-        NoteSheetThree.SetActive(true);
+        StartCoroutine(ToNoteSheetThreeTransition());
+        
+    }
+
+    public void PostItClick()
+    {
+        StartCoroutine(ToPostItTransition());
+        
     }
 
     public void BackToTeenageRoom()
     {
+        StartCoroutine(BackToTeenageRoomTransition());
+
+        
+    }
+
+    public void ClickEyeOne()
+    {
+        StartCoroutine(ToEyeOneTransition());
+    }
+
+    public void ClickEyeTwo(){
+        StartCoroutine(ToEyeTwoTransition());
+    }
+
+    public void ClickEyeThree(){
+        StartCoroutine(ToEyeThreeTransition());
+    }
+
+    public void ClickEyeFour(){
+        StartCoroutine(ToEyeFourTransition());
+    }
+
+    public void ClickEyeFive(){
+        StartCoroutine(ToEyeFiveTransition());
+    }
+
+        public void ClickEyeSix(){
+        StartCoroutine(ToEyeSixTransition());
+    }
+
+        public void ClickEyeSeven(){
+        StartCoroutine(ToEyeSevenTransition());
+    }
+
+    public void ClickToNivrana(){
+        StartCoroutine(ToNirvanaTransition());
+    }
+
+
+    public void ClickTetriXScreen(){
+        StartCoroutine(ToTetrixTransition());
+    }
+
+    public void ClickOnRadioFull()
+    {
+        StartCoroutine(ToRadioFullTransition());
+    }
+
+    public void ClickOnClock()
+    {
+        StartCoroutine(ToClockTransition());
+    }
+
+    public IEnumerator ToPianoRoomTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        InventoryDown.selected = true;
+        TeenageRoom.SetActive(false);
+        PianoRoom.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToAtelieRoomTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        InventoryDown.selected = true;
+        TeenageRoom.SetActive(false);
+        Atelier.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToPitendoControlerTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        TeenageRoomEmpty.SetActive(false);
+        TeenageRoomButtons.SetActive(false);
+        PitendoControler.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToRadioTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        TeenageRoomEmpty.SetActive(false);
+        TeenageRoomButtons.SetActive(false);
+        Radio.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToPosterTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        TeenageRoomEmpty.SetActive(false);
+        TeenageRoomButtons.SetActive(false);
+        Poster.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToNoteSheetThreeTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        TeenageRoomEmpty.SetActive(false);
+        TeenageRoomButtons.SetActive(false);
+        NoteSheetThree.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToPostItTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        TeenageRoomEmpty.SetActive(false);
+        TeenageRoomButtons.SetActive(false);
+        PostIt.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator BackToTeenageRoomTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        PostIt.SetActive(false);
         PitendoControler.SetActive(false);
         NoteSheetThree.SetActive(false);
         TeenageRoomButtons.SetActive(true);
@@ -98,63 +265,163 @@ public class TeenageRoomButtonManager : MonoBehaviour
         CobainPoster_6.SetActive(false);
         CobainPoster_7.SetActive(false);
 
+        BigClock.SetActive(false);
+
 
         TeenageRoomEmpty.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
-    public void ClickEyeOne()
-    {
+    public IEnumerator ToTetrixTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        InventoryDown.selected = true;
+        TeenageRoom.SetActive(false);
+        TetriX.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToRadioFullTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        TeenageRoomEmpty.SetActive(false);
+        TeenageRoomButtons.SetActive(false);
+        RadioFull.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+
+    public IEnumerator ToClockTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        TeenageRoomEmpty.SetActive(false);
+        TeenageRoomButtons.SetActive(false);
+        BigClock.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
+    }
+    public IEnumerator ToEyeOneTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         Poster.SetActive(false);
         CobainPoster_1.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
-    public void ClickEyeTwo(){
+    public IEnumerator ToEyeTwoTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         CobainPoster_1.SetActive(false);
         CobainPoster_2.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
-    public void ClickEyeThree(){
+    public IEnumerator ToEyeThreeTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         CobainPoster_2.SetActive(false);
         CobainPoster_3.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
-    public void ClickEyeFour(){
+    public IEnumerator ToEyeFourTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         CobainPoster_3.SetActive(false);
         CobainPoster_4.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
-    public void ClickEyeFive(){
+    public IEnumerator ToEyeFiveTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         CobainPoster_4.SetActive(false);
         CobainPoster_5.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
-        public void ClickEyeSix(){
+    public IEnumerator ToEyeSixTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         CobainPoster_5.SetActive(false);
         CobainPoster_6.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
-        public void ClickEyeSeven(){
+    public IEnumerator ToEyeSevenTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
         CobainPoster_6.SetActive(false);
         CobainPoster_7.SetActive(true);
+
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 
-    public void ClickToNivrana(){
+    public IEnumerator ToNirvanaTransition(){
+        TransitionIn.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionIn.SetActive(false);
+
+        InventoryDown.selected = true;
         CobainPoster_7.SetActive(false);
         TeenageRoom.SetActive(false);
         EyeButton.SetActive(false);
         StraightToNirvanaButton.SetActive(true);
         Nirvana.SetActive(true);
-    }
 
-
-    public void ClickTetriXScreen(){
-        TeenageRoom.SetActive(false);
-        TetriX.SetActive(true);
-    }
-
-    public void ClickOnRadioFull()
-    {
-        TeenageRoomEmpty.SetActive(false);
-        RadioFull.SetActive(true);
+        TransitionOut.SetActive(true);
+        yield return new WaitForSeconds(TransitionTime);
+        TransitionOut.SetActive(false);
     }
 }
+

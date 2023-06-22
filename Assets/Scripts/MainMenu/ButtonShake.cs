@@ -28,20 +28,23 @@ public class ButtonShake : MonoBehaviour
     
     void OnMouseOver()
     {
- 
-        ButtonAnimation.speed = 1;
-        if(OptionButton != null)
+        if (Input.GetMouseButtonDown(0))
         {
-            OptionButton.GetComponent<Animator>().speed = 0;
-        }
-        
+            ButtonAnimation.speed = 1;
+            if(OptionButton != null)
+            {
+                OptionButton.GetComponent<Animator>().speed = 0;
+            }
+    }
         
 
      }
 
     void OnMouseExit()
     {
-
-        ButtonAnimation.speed = 0;
+        
+            ButtonAnimation.speed = 0;
+        
+        
     }
 }

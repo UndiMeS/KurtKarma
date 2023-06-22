@@ -123,8 +123,6 @@ public class SecretSolutionDetection : MonoBehaviour {
 
         if (col.gameObject.name == "Punkt") {
             PunktSelected = col.gameObject.GetComponent<MayaSymbolDrop> ().selected;
-
-            
         }
        
         if (col.gameObject.name == "Strich") {
@@ -145,19 +143,16 @@ public class SecretSolutionDetection : MonoBehaviour {
         if (col.gameObject.name == "Punkt") {
             PunktCount--;
             PunktSelected = col.gameObject.GetComponent<MayaSymbolDrop> ().selected;
-            PunktDestroy = false;
         }
 
         if (col.gameObject.name == "Strich") {
             StrichCount--;
             StrichSelected = col.gameObject.GetComponent<MayaSymbolDrop> ().selected;
-            StrichDestroy = false;
         }
 
         if (col.gameObject.name == "BreadSymbol") {
             BreadCount--;
             BreadSelected = col.gameObject.GetComponent<MayaSymbolDrop> ().selected;
-            BreadDestroy = false;
         }
 
     }

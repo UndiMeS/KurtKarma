@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("escape_room_scene1");
+        SceneManager.LoadScene("TetriX");
     }
 
     public void QuitGame()

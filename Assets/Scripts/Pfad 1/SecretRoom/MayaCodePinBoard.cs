@@ -13,8 +13,6 @@ public class MayaCodePinBoard : MonoBehaviour {
     public bool InstanceCreated;
     public int punktcount;
 
-    public bool DragItem;
-
     // Start is called before the first frame update
     void Start () {
         StartPosition = this.transform.position;
@@ -26,38 +24,23 @@ public class MayaCodePinBoard : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-
-
-        if (selected == true && instance != null && DragItem == false) {
+        if (selected == true && instance != null) {
 
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 
             instance.transform.position = new Vector3 (cursorPos.x, cursorPos.y,-1);
-            instance.transform.position = new Vector3(instance.transform.position.x, instance.transform.position.y, -1);
-
-            DragItem = true;
-
-
-
-            //this.transform.position = new Vector3 (cursorPos.x, cursorPos.y,-1);
 
             
 
         }
-        if(Input.GetMouseButtonUp(0))
-        {
-            DragItem = false;
-        }
 
     }
 
-    void OnMouseDown () {
+    void OnMouseOver () {
 
         if (Input.GetMouseButtonDown (0)) {
 
-
-            //Do your thing.
-             x = thePrefab.GetComponent<MayaSymbolDrop>().InstanceCount;
+            x = thePrefab.GetComponent<MayaSymbolDrop>().InstanceCount;
 
             selected = true;
             instance = Instantiate (thePrefab, transform.position, transform.rotation);
@@ -67,20 +50,22 @@ public class MayaCodePinBoard : MonoBehaviour {
             instance.transform.parent = ParentObject.transform;
             instance.transform.position = new Vector3(instance.transform.position.x, instance.transform.position.y, -1);
             thePrefab.GetComponent<MayaSymbolDrop>().InstanceCount = thePrefab.GetComponent<MayaSymbolDrop>().InstanceCount +1;
-        
-
-           
 
 
+            // punktcount = GameObject.Find("SolutionOne").GetComponent<SecretSolutionDetection>().PunktCount;
+
+            // if(punktcount > 4)
+            // {
+            //     GameObject.Find("SolutionOne").GetComponent<BoxCollider2D>().enabled = false;
+            // }
 
         }
 
+        if (Input.GetMouseButtonUp (0)) {
 
-    }
-    public void OnMouseUp()
-    {
-        selected = false;
-            DragItem = false;
-            instance.transform.position = new Vector3(instance.transform.position.x, instance.transform.position.y, -1);
+            selected = false;
+            //transform.position = StartPosition;
+
+        }
     }
 }

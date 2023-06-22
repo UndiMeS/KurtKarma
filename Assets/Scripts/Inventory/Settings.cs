@@ -26,6 +26,8 @@ public class Settings : MonoBehaviour
     public GameObject HintIntro;
     public bool HintIntroBool;
 
+    public GameObject AltarRiddle;
+
     public static int BlueBulbCount;
     public static int RedBulbCount;
     public static List<float> Hints = new List<float>();
@@ -48,7 +50,7 @@ public class Settings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShowHints = Hints;
+        //ShowHints = Hints;
     }
 
     public void SettingsButton()
@@ -84,6 +86,7 @@ public class Settings : MonoBehaviour
         InventoryArrowScript.OppositeArrow.GetComponent<InventarArrow>().selected = false;
         InventoryArrowScript.selected = true;
         InventoryArrowUp.SetActive(false);
+
 
         if(HintIntroBool == false)
         {

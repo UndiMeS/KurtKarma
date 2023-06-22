@@ -13,8 +13,6 @@ public class MayaSymbolDrop : MonoBehaviour
     public GameObject Line;
     public GameObject Bread;
 
-    public bool ItemDrag;
-
     public int InstanceCount;
     public bool InstanceCreated;
 
@@ -30,24 +28,6 @@ public class MayaSymbolDrop : MonoBehaviour
         InstanceCount = 1;
         startselection = true;
 
-        if(Input.GetMouseButton(0)){
-
-            GameObject SolutionOneCollider = GameObject.Find("SolutionOne");
-            SecretSolutionDetection SolutionOneDetection = SolutionOneCollider.GetComponent<SecretSolutionDetection>();
-
-            
-
-            selected = true;
-
-
-
-           
-
-            
-
-
-        }
-
     }
 
     // Update is called once per frame
@@ -59,6 +39,13 @@ public class MayaSymbolDrop : MonoBehaviour
 
         SecretSolutionDetection SolutionOneDetection = SolutionOneCollider.GetComponent<SecretSolutionDetection>();
 
+        // GameObject SolutionTwoCollider = GameObject.Find("SolutionTwo");
+
+        // ScaleRightDetection RightScript = RightCollider.GetComponent<ScaleRightDetection>();
+
+        // GameObject SolutionThreeCollider = GameObject.Find("SolutionThree");
+
+        // ScaleRightDetection RightScript = RightCollider.GetComponent<ScaleRightDetection>();
 
 
 
@@ -74,13 +61,15 @@ public class MayaSymbolDrop : MonoBehaviour
         if(selected == true){
             Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector3(cursorPos.x, cursorPos.y, -1);
-            transform.position = new Vector3(transform.position.x, transform.position.y, -1);
 
             
 
         }
 
-
+        // if(selected == false)
+        // {
+        //     this.GetComponent<CircleCollider2D>().enabled = true;
+        // }
 
 
 
@@ -95,47 +84,7 @@ public class MayaSymbolDrop : MonoBehaviour
 
     }
 
-    void OnMouseOver()
-    {
-        if(Input.GetMouseButtonUp(0))
-        {
-                        BreadDrag.selected = false;
-            PointDrag.selected = false;
-            LineDrag.selected = false;
-
-            
-
-            selected = false;
-            startselection = false;
-
-            transform.position = new Vector3(transform.position.x, transform.position.y, -1);
-
-            GameObject SolutionOneCollider = GameObject.Find("SolutionOne");
-
-            SolutionOneCollider.GetComponent<SecretSolutionDetection>().PointSelected = false;
-
-            SolutionOneCollider.GetComponent<BoxCollider2D>().enabled = true;
-
-            if(GameObject.Find("SolutionOne").GetComponent<SecretSolutionDetection>().PunktDestroy == true || GameObject.Find("SolutionOne").GetComponent<SecretSolutionDetection>().StrichDestroy == true || GameObject.Find("SolutionOne").GetComponent<SecretSolutionDetection>().BreadDestroy == true)
-            {
-                Destroy(this.gameObject);
-                GameObject.Find("SolutionOne").GetComponent<SecretSolutionDetection>().PunktDestroy = false;
-                GameObject.Find("SolutionOne").GetComponent<SecretSolutionDetection>().StrichDestroy = false;
-                GameObject.Find("SolutionOne").GetComponent<SecretSolutionDetection>().BreadDestroy = false;
-
-            }
-
-             if(GameObject.Find("SolutionTwo").GetComponent<SecretSolutionDetection>().PunktDestroy == true || GameObject.Find("SolutionTwo").GetComponent<SecretSolutionDetection>().StrichDestroy == true || GameObject.Find("SolutionTwo").GetComponent<SecretSolutionDetection>().BreadDestroy == true)
-            {
-                Destroy(this.gameObject);
-                GameObject.Find("SolutionTwo").GetComponent<SecretSolutionDetection>().PunktDestroy = false;
-                GameObject.Find("SolutionTwo").GetComponent<SecretSolutionDetection>().StrichDestroy = false;
-                GameObject.Find("SolutionTwo").GetComponent<SecretSolutionDetection>().BreadDestroy = false;
-            }
-        }
-    }
-
-    void OnMouseDown(){
+    void OnMouseOver(){
 
 
         if(Input.GetMouseButton(0)){
@@ -147,7 +96,14 @@ public class MayaSymbolDrop : MonoBehaviour
 
             selected = true;
 
+            //SolutionOneCollider.GetComponent<BoxCollider2D>().enabled = false;
 
+            // BreadDrag.selected = true;
+            // PointDrag.selected = true;
+            // LineDrag.selected = true;
+            // BreadDrag.InstanceCreated = false;
+            // LineDrag.InstanceCreated = false;
+            // PointDrag.InstanceCreated = false;
 
            
 
@@ -157,9 +113,7 @@ public class MayaSymbolDrop : MonoBehaviour
         }
 
 
-                }
-
-        void OnMouseUp(){
+        else{
 
             BreadDrag.selected = false;
             PointDrag.selected = false;
@@ -169,8 +123,6 @@ public class MayaSymbolDrop : MonoBehaviour
 
             selected = false;
             startselection = false;
-
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.localPosition.z - InstanceCount);
 
             GameObject SolutionOneCollider = GameObject.Find("SolutionOne");
 
@@ -195,7 +147,13 @@ public class MayaSymbolDrop : MonoBehaviour
                 GameObject.Find("SolutionTwo").GetComponent<SecretSolutionDetection>().BreadDestroy = false;
             }
 
-
+            //  if(GameObject.Find("SolutionThree").GetComponent<SecretSolutionDetection>().PunktDestroy == true || GameObject.Find("SolutionThree").GetComponent<SecretSolutionDetection>().StrichDestroy == true || GameObject.Find("SolutionThree").GetComponent<SecretSolutionDetection>().BreadDestroy == true)
+            // {
+            //     Destroy(this.gameObject);
+            //     GameObject.Find("SolutionThree").GetComponent<SecretSolutionDetection>().PunktDestroy = false;
+            //     GameObject.Find("SolutionThree").GetComponent<SecretSolutionDetection>().StrichDestroy = false;
+            //     GameObject.Find("SolutionThree").GetComponent<SecretSolutionDetection>().BreadDestroy = false;
+            // }
             
 
 
@@ -205,8 +163,11 @@ public class MayaSymbolDrop : MonoBehaviour
 
         }
 
-
-        
+        // if(BreadDrag.InstanceCreated == true || LineDrag.InstanceCreated == true || PointDrag.InstanceCreated == true)
+        // {
+            
+    //}
+        }
 
 
 
@@ -221,7 +182,10 @@ public class MayaSymbolDrop : MonoBehaviour
         {
             ColliderTwoEnter = true;
         }
-
+        // if(col.gameObject.name == "SolutionThree")
+        // {
+        //     ColliderThreeEnter = true;
+        // }
         
     }
 
@@ -235,7 +199,10 @@ public class MayaSymbolDrop : MonoBehaviour
         {
             ColliderTwoEnter = false;
         }
-
+        // if(col.gameObject.name == "SolutionThree")
+        // {
+        //     ColliderThreeEnter = false;
+        // }
     }
 
         

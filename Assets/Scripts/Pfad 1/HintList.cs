@@ -6,6 +6,7 @@ using TMPro;
 public class HintList : MonoBehaviour
 {
     public TMP_Text List;
+    public bool ShowListOnce;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,9 +22,14 @@ public class HintList : MonoBehaviour
 
     public void ListOfHints()
     {
-        foreach(float hint in Settings.Hints)
+        if(ShowListOnce == false)
         {
-            List.text = List.text + hint + " wurde benutzt\n";
+                foreach(float hint in Settings.Hints)
+            {
+                List.text = List.text + hint + " wurde benutzt\n";
+            }
+            ShowListOnce = true;
         }
+        
     }
 }
