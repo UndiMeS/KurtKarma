@@ -12,8 +12,6 @@ public class PinButton : MonoBehaviour
 
     public Sprite NotPressed;
     public Sprite Pressed;
-
-    public AudioSource PinSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +51,6 @@ public class PinButton : MonoBehaviour
             
             selected = true;
             PasswortAnalyse.Passwort = PasswortAnalyse.Passwort + TastenNummer;
-            PinSound.Play();
 
         }
     }

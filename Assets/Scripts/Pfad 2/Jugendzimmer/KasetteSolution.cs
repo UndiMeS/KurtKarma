@@ -10,10 +10,10 @@ public class KasetteSolution : MonoBehaviour
     public AudioSource EinlegenSound;
     //public GameObject TetrixScreen;
     public GameObject RecorderFull;
-    public GameObject RecorderEmpty;
+    public GameObject RcorderEmpty;
 
     public GameObject RadioSmallEmpty;
-    //public GameObject RadioSmallFull;
+    public GameObject RadioSmallFull;
 
     public GameObject Kasette;
     public GameObject KasetteFinalParent;
@@ -23,8 +23,6 @@ public class KasetteSolution : MonoBehaviour
 
     public GameObject ItemPlaceOne;
     public GameObject ItemPlaceTwo;
-
-    public Sprite RadioSmallFull;
     // Start is called before the first frame update
     void Start () { 
         RecorderFull.SetActive(false);
@@ -34,24 +32,6 @@ public class KasetteSolution : MonoBehaviour
     // Update is called once per frame
     void Update () {
         if (KasetteColliderEnter == true && Kasette.GetComponent<ClickOnItem> ().selected == false) {
-
-
-            if(this.gameObject.transform.parent.gameObject.name == "Radio")
-            {
-                RecorderEmpty.SetActive(false);
-                RecorderFull.SetActive(true);
-            }
-
-           
-                RadioSmallEmpty.GetComponent<SpriteRenderer>().sprite = RadioSmallFull;
-                //RadioSmallFull.SetActive(true);
-            
-
-            if(this.gameObject.transform.parent.gameObject.name == "TeenageRoomEmpty")
-            {
-                
-            }
-
 
             EinlegenSound.Play();
             ItemPlaceOne.GetComponent<ItemPlace>().ItemListStart = false;
@@ -75,7 +55,23 @@ public class KasetteSolution : MonoBehaviour
             RadioButton.SetActive(false);
             RadioButtonFull.SetActive(true);
 
-            
+            if(this.gameObject.transform.parent.gameObject.name == "Radio")
+            {
+                RcorderEmpty.SetActive(false);
+                RecorderFull.SetActive(true);
+            }
+
+            else
+            {
+                RadioSmallEmpty.SetActive(false);
+                RadioSmallFull.SetActive(true);
+            }
+
+            if(this.gameObject.transform.parent.gameObject.name == "TeenageRoomEmpty")
+            {
+                
+            }
+
 
 
 

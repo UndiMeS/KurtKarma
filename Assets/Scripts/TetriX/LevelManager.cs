@@ -19,7 +19,6 @@ public class LevelManager : MonoBehaviour
     public GameObject LevelTwoIntro;
     public GameObject LevelThreeIntro;
     public GameObject controller;
-    public ControllerCross KeyboardController;
     public GameObject PauseOne;
     public GameObject PauseTwo;
     public GameObject PauseThree;
@@ -86,21 +85,9 @@ public class LevelManager : MonoBehaviour
     public bool OneFinished;
     public bool TwoFinished;
     public bool ThreeFinished;
-
-    public AudioSource TetrixBackgroundMusic;
-    public float TetrixStartVolume;
-
-    public GameObject TransitionIn;
-    public GameObject TransitionOut;
-    public float TransitionTime;
     // Start is called before the first frame update
     void Start()
     {
-
-        TetrixStartVolume = TetrixBackgroundMusic.volume;
-
-
-
         StartMenu.SetActive(true);
         LevelOneIntro.SetActive(false);
         LevelOne.SetActive(false);
@@ -139,10 +126,6 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator StartOne()
     {
-
-        
-
-
                 if(IntroOne == true)
         {
         LevelOneIntro.SetActive(true);
@@ -157,7 +140,6 @@ public class LevelManager : MonoBehaviour
     public void GameStart()
     {
         StartMenu.SetActive(false);
-        //StartCoroutine(FadeIn(TetrixBackgroundMusic, 0.002f));
         IntroOne = true;
 
 
@@ -207,7 +189,6 @@ public class LevelManager : MonoBehaviour
         PauseOne.SetActive(false);
 
         controller.SetActive(true);
-        KeyboardController.enabled = true;
 
         LostOne = false;
 
@@ -223,16 +204,6 @@ public class LevelManager : MonoBehaviour
 
         levelTwoBrickWindowOne.SetActive(true);
         levelTwoBrickWindowTwo.SetActive(true);
-
-        if(levelTwoBrickWindowOne)
-        {
-            levelTwoBrickWindowOne.GetComponent<SelectBrickOne>().BrickPicked = false;
-        }
-
-        if(levelTwoBrickWindowTwo)
-        {
-            levelTwoBrickWindowTwo.GetComponent<SelectBrickTwo>().BrickPicked = false;
-        }
 
         LostTwo = false;
 
@@ -342,7 +313,6 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        levelThreeBrickWindowOne.GetComponent<SelectBrickOne>().BrickPicked = false;
         foreach (GameObject BrickWindowOne in LevelThreeNewBrickWindowsOne)
         {
             BrickWindowOne.GetComponent<SelectBrickOne>().BrickPicked = false;
@@ -350,7 +320,6 @@ public class LevelManager : MonoBehaviour
             BrickWindowOne.SetActive(false);
         }
 
-        levelThreeBrickWindowTwo.GetComponent<SelectBrickTwo>().BrickPicked = false;
         foreach (GameObject BrickWindowTwo in LevelThreeNewBrickWindowsTwo)
         {
             BrickWindowTwo.GetComponent<SelectBrickTwo>().BrickPicked = false;
@@ -419,7 +388,6 @@ public class LevelManager : MonoBehaviour
     IEnumerator Win()
     {
 
-
         OneFinished = WinningOne.GetComponent<Winning>().LevelOneClear;
         //TwoFinished = WinningTwo.GetComponent<WinLevelTwo>().LevelTwoClear;
         TwoFinished = WinningTwo.GetComponent<SecondPartWin>().LevelTwoClear;
@@ -461,7 +429,6 @@ public class LevelManager : MonoBehaviour
             LevelTwoIntro.SetActive(false);
             LevelTwo.SetActive(true);
             controller.SetActive(true);
-            KeyboardController.enabled = true;
             
         }
 
@@ -506,7 +473,6 @@ public class LevelManager : MonoBehaviour
             LevelThreeIntro.SetActive(false);
             LevelThree.SetActive(true);
             controller.SetActive(true);
-            KeyboardController.enabled = true;
 
             // LevelThreeBrickOne.GetComponent<BrickMovement>().Restart = false;
             // LevelThreeBrickTwo.GetComponent<BrickMovement>().Restart = false;
@@ -548,7 +514,6 @@ public class LevelManager : MonoBehaviour
 
             LevelOne.SetActive(true);
             controller.SetActive(true);
-            KeyboardController.enabled = true;
 
 
                 //yield return new WaitForSeconds(ScreenTime);
@@ -586,7 +551,6 @@ public class LevelManager : MonoBehaviour
 
             LevelTwo.SetActive(true);
             controller.SetActive(true);
-            KeyboardController.enabled = true;
 
 
                 //yield return new WaitForSeconds(ScreenTime);
@@ -623,7 +587,6 @@ public class LevelManager : MonoBehaviour
 
             LevelThree.SetActive(true);
             controller.SetActive(true);
-            KeyboardController.enabled = true;
 
 
                 //yield return new WaitForSeconds(ScreenTime);
@@ -660,7 +623,6 @@ public class LevelManager : MonoBehaviour
 
                     LevelThree.SetActive(true);
                     controller.SetActive(true);
-                    KeyboardController.enabled = true;
 
 
                     //yield return new WaitForSeconds(ScreenTime);
@@ -684,21 +646,18 @@ public class LevelManager : MonoBehaviour
     {
         PauseOne.SetActive(true);
         controller.SetActive(false);
-        KeyboardController.enabled = false;
     }
 
     public void PauseButtonTwo()
     {
         PauseTwo.SetActive(true);
         controller.SetActive(false);
-        KeyboardController.enabled = false;
     }
 
     public void PauseButtonThree()
     {
         PauseThree.SetActive(true);
         controller.SetActive(false);
-        KeyboardController.enabled = false;
     }
 
 
@@ -708,69 +667,12 @@ public class LevelManager : MonoBehaviour
         PauseTwo.SetActive(false);
         PauseThree.SetActive(false);
         controller.SetActive(true);
-        KeyboardController.enabled = true;
     }
 
     public void ExitGame()
     {
-        StartCoroutine(ExitTetrixTransition());
-    }
-
-    // public void FadeMusicOut()
-    // {
-    //     StartCoroutine(FadeOut(TetrixBackgroundMusic, 2.0f));
-    // }
-
-    // public void FadeMusicIn()
-    // {
-    //     StartCoroutine(FadeIn(TetrixBackgroundMusic, 0.002f));
-    // }
-
-
-
-    // public static IEnumerator FadeOut (AudioSource audioSource, float FadeTime) {
-    //     float startVolume = audioSource.volume;
- 
-    //     while (audioSource.volume > 0) {
-    //         audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
- 
-    //         yield return null;
-    //     }
- 
-    //     audioSource.Stop ();
-    //     audioSource.volume = startVolume;
-    // }
-
-    // public static IEnumerator FadeIn (AudioSource audioSource, float FadeTime) {
-    //     float startVolume = 0.001f;
-
-    //     audioSource.Play ();
-
-    //     audioSource.volume = startVolume;
- 
-    //     while (audioSource.volume < 1) {
-    //         audioSource.volume += startVolume * Time.deltaTime / FadeTime;
- 
-    //         yield return null;
-    //     }
- 
-        
-    //     //audioSource.volume = startVolume;
-    // }
-
-
-
-    public IEnumerator ExitTetrixTransition(){
-        TransitionIn.SetActive(true);
-        yield return new WaitForSeconds(TransitionTime);
-        TransitionIn.SetActive(false);
-
         TetriX.SetActive(false);
         TeenageRoom.SetActive(true);
-
-        TransitionOut.SetActive(true);
-        yield return new WaitForSeconds(TransitionTime);
-        TransitionOut.SetActive(false);
     }
 
     

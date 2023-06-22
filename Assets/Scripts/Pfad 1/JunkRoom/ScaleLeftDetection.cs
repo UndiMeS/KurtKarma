@@ -50,7 +50,7 @@ public class ScaleLeftDetection : MonoBehaviour
         
         
 
-        if(BallColliderExit == true)
+        if(BallColliderExit == true || BallColliderEnter == true && KeyballSelected.selected == true)
         {
             pole.transform.rotation = Quaternion.Slerp(pole.transform.rotation, Quaternion.Euler(pole.transform.rotation.x, pole.transform.rotation.y, Zrotation), Time.deltaTime * speed);
             

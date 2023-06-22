@@ -10,7 +10,7 @@ public class ScaleRightDetection : MonoBehaviour
     public GameObject pole;
     public GameObject ScaleSnapping;
     public GameObject KeyBall;
-    DragAndDrop KeyballSelected;
+    public DragAndDrop KeyballSelected;
     public GameObject KeyBallSnapping;
     Collider2D BallCollider;
     public float speed = 1.0f;
@@ -53,7 +53,7 @@ public class ScaleRightDetection : MonoBehaviour
        
 
 
-        if(BallColliderExit == true)
+        if(BallColliderExit == true || BallColliderEnter == true && KeyballSelected.selected == true)
         {
             //KeyBall.transform.position = KeyBall.transform.position;
 

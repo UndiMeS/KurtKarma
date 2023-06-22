@@ -8,7 +8,6 @@ public class ButtonConfirm : MonoBehaviour
 
     public Sprite NotPressed;
     public Sprite Pressed;
-    public AudioSource PinSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +42,7 @@ public class ButtonConfirm : MonoBehaviour
 
         if (Input.GetMouseButtonDown (0)) {
             
-            PinSound.Play();
+            
             selected = true;
 
         }

@@ -24,12 +24,10 @@ public class ClickOnItem : MonoBehaviour
     public Color MaterialColor;
 
     public Color Outlinecolor;
-    public AudioSource ItemSound;
 
     // Start is called before the first frame update
     void Start()
     {
-        ItemSound = this.gameObject.GetComponent<AudioSource>();
         sprite = GetComponent<SpriteRenderer>();
 
         M_material = InventoryArrow.GetComponent<Renderer>().material;
@@ -100,7 +98,6 @@ public class ClickOnItem : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0)){
                 selected = true;
-                
 
                 if(InItemBarOne == false && DragOne == false && InItemBarTwo == false && selected == true)
                 {
@@ -108,14 +105,12 @@ public class ClickOnItem : MonoBehaviour
 
                 if(this.gameObject.name == "SNES Modul")
                 {
-                    ItemSound.Play();
                     this.gameObject.transform.localScale = new Vector3(0.6f, 0.6f, 0);
 
                     this.gameObject.transform.rotation = Quaternion.Euler(0.0f,0.0f, -37.0f);
                 }
                 if(this.gameObject.name == "Kasette im Tresor")
                 {
-                    ItemSound.Play();
                     this.gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 0);
                 }
                 
@@ -132,11 +127,9 @@ public class ClickOnItem : MonoBehaviour
 
                 if(InItemBarTwo == false && DragTwo == false && InItemBarOne == true && selected == true && DragOne == false)
                 {
-                    
                 this.gameObject.transform.position = new Vector3(ItemPlaceTwo.transform.position.x, ItemPlaceTwo.transform.position.y, -1.0f);
                  if(this.gameObject.name == "SNES Modul")
                 {
-                    
                     this.gameObject.transform.localScale = new Vector3(0.6f, 0.6f, 0);
 
                     this.gameObject.transform.rotation = Quaternion.Euler(0.0f,0.0f, -37.0f);
@@ -144,11 +137,6 @@ public class ClickOnItem : MonoBehaviour
                 if(this.gameObject.name == "Schlüssel")
                 {
                     this.gameObject.transform.localScale = new Vector3(50.0f, 50.0f, 0);
-                }
-                if(this.gameObject.name == "Kasette im Tresor")
-                {
-                    ItemSound.Play();
-                    this.gameObject.transform.localScale = new Vector3(0.2f, 0.2f, 0);
                 }
                 this.gameObject.transform.parent = ItemPlaceTwo.transform;
                 sprite.sortingOrder = sortingorder;

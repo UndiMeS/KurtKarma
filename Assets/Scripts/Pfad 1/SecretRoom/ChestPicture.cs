@@ -22,11 +22,11 @@ public class ChestPicture : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if(KeySolution.KeyInPlace == true)
-        // {
-        //     ChestOpen = true;
-        //     this.gameObject.GetComponent<SpriteRenderer>().sprite = ChestPictureOpen;
-        //     ChestPictureButton.SetActive(true);
-        // }
+        if(KeySolution.KeyInPlace == true)
+        {
+            ChestOpen = true;
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = ChestPictureOpen;
+            ChestPictureButton.SetActive(true);
+        }
     }
 }

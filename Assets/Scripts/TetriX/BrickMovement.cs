@@ -9,8 +9,6 @@ public class BrickMovement : MonoBehaviour {
     public GameObject Down;
     public GameObject Left;
 
-    public GameObject ControllerSkript;
-
     public GameObject TurnLeft;
     public GameObject TurnRight;
 
@@ -128,11 +126,6 @@ public class BrickMovement : MonoBehaviour {
 
 
 
-
-        // UpPress = Up.GetComponent<ControllerClick> ().selected;
-        // RightPress = Right.GetComponent<ControllerClick> ().selected;
-        // DownPress = Down.GetComponent<ControllerClick> ().selected;
-        // LeftPress = Left.GetComponent<ControllerClick> ().selected;
 
         UpPress = Up.GetComponent<ControllerClick> ().selected;
         RightPress = Right.GetComponent<ControllerClick> ().selected;
@@ -301,33 +294,33 @@ public class BrickMovement : MonoBehaviour {
 
         }
 
-        // if (UpPress == true) {
+        if (UpPress == true) {
 
-        //     foreach (Transform MovePosition in MovePositions)
-        //     {
-        //         if(! Physics2D.OverlapCircle(MovePosition.position + new Vector3 (0.0f,step, 0.0f), .2f, whatStopsMovement))
-        //         {
-        //             movePoint.position += new Vector3 (0.0f,step, 0.0f);
+            foreach (Transform MovePosition in MovePositions)
+            {
+                if(! Physics2D.OverlapCircle(MovePosition.position + new Vector3 (0.0f,step, 0.0f), .2f, whatStopsMovement))
+                {
+                    movePoint.position += new Vector3 (0.0f,step, 0.0f);
                     
-        //         ReadyToMove += 1;
+                ReadyToMove += 1;
                     
                     
-        //         }
-        //         else
-        //         {
-        //             Debug.Log("going in wall");
-        //             //movePoint.position = this.transform.position;
-        //             ReadyToMove += 0;
-        //         }
-        //     }
+                }
+                else
+                {
+                    Debug.Log("going in wall");
+                    //movePoint.position = this.transform.position;
+                    ReadyToMove += 0;
+                }
+            }
 
             
             
 
-        //      UpPress = false;
-        //      Up.GetComponent<ControllerClick> ().selected = false;
+             UpPress = false;
+             Up.GetComponent<ControllerClick> ().selected = false;
 
-        // }
+        }
         if (RightPress == true) {
 
             foreach (Transform MovePosition in MovePositions)
@@ -425,7 +418,7 @@ public class BrickMovement : MonoBehaviour {
                     
                     //Debug.Log("open Window One");
 
-                    foreach(BoxCollider2D bc in myColliders)
+                                        foreach(BoxCollider2D bc in myColliders)
                     {
                         bc.enabled = true;
                     }

@@ -65,7 +65,7 @@ public class SecondPartWin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.gameObject.activeSelf == true)
+        if(this.gameObject.active == true)
         {
             
             foreach (GameObject Hightlight in Highlights)
