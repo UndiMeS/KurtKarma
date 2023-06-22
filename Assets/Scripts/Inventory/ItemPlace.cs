@@ -27,12 +27,12 @@ public class ItemPlace : MonoBehaviour
     {
         if(ItemOne)
         {
-            DragItemOne = ItemOne.GetComponent<ClickOnItem>().DragOne;
+            DragItemOne = ItemOne.GetComponent<ClickOnKey>().DragOne;
         }
         
         if(ItemTwo)
         {
-            DragItemTwo = ItemTwo.GetComponent<ClickOnItem>().DragTwo;
+            DragItemTwo = ItemTwo.GetComponent<ClickOnKey>().DragTwo;
         }
 
     }
@@ -58,6 +58,8 @@ public class ItemPlace : MonoBehaviour
             }
 
         }
+
+        
         
     }
 
@@ -79,6 +81,8 @@ public class ItemPlace : MonoBehaviour
             }
             
         }
+
+        
     }
 
         void OnTriggerExit2D(Collider2D col)
@@ -92,5 +96,7 @@ public class ItemPlace : MonoBehaviour
         {
             fullTwo = false;
         }
+
+       
     }
 }

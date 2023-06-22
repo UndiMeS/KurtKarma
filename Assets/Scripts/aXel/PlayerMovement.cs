@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private CharacterController controller;
 
+    public Vector3 startPosition;
 
     //public float dashSpeed;
     //private float dashTime;
@@ -37,7 +38,8 @@ public class PlayerMovement : MonoBehaviour {
     public Vector3 StartPosition;
     public Quaternion StartRotation;
 
-    public GameObject[] NumbersEaten;
+    public GameObject[] NumbersEatenLeft;
+    public GameObject[] NumbersEatenRight;
 
     public BoxCollider2D UpButton;
     public BoxCollider2D RightButton;
@@ -59,16 +61,17 @@ public class PlayerMovement : MonoBehaviour {
     public Transform movePoint;
 
     public LayerMask whatStopsMovement;
-    public bool start = false;
+
+    public GameObject Pause;
+
 
 
     // Start is called before the first frame update
     void Start () {
 
-        // movePoint.SetParent (null);
-        // movePoint.position = this.transform.position;
-        // StartPosition = this.transform.position;
-        
+        movePoint.SetParent (null);
+        movePoint.position = this.transform.position;
+        StartPosition = this.transform.position;
         UpButton = Up.GetComponent<BoxCollider2D> ();
         RightButton = Right.GetComponent<BoxCollider2D> ();
         DownButton = Down.GetComponent<BoxCollider2D> ();
@@ -89,14 +92,6 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update () {
 
-        if(start == false)
-        {
-            movePoint.SetParent (null);
-        movePoint.position = this.transform.position;
-        StartPosition = this.transform.position;
-        start = true;
-        }
-
         OneFinished = Solution.GetComponent<SolutionNumbers>().spinOne;
         TwoFinished = Solution.GetComponent<SolutionNumbers>().spinTwo;
         ThreeFinished = Solution.GetComponent<SolutionNumbers>().spinThree;
@@ -104,9 +99,9 @@ public class PlayerMovement : MonoBehaviour {
 
 
 
-        NumbersEaten = GameObject.FindGameObjectsWithTag("aXelNumberLeft");
+        NumbersEatenLeft = GameObject.FindGameObjectsWithTag("aXelNumberLeft");
 
-        foreach(GameObject NumberEaten in NumbersEaten)
+        foreach(GameObject NumberEaten in NumbersEatenLeft)
         {
             if(NumberEaten.GetComponent<aXelNumber>().Eaten == true)
             {
@@ -119,9 +114,9 @@ public class PlayerMovement : MonoBehaviour {
             // animator.SetBool("Eat", false);
         }
 
-        NumbersEaten = GameObject.FindGameObjectsWithTag("aXelNumberRight");
+        NumbersEatenRight = GameObject.FindGameObjectsWithTag("aXelNumberRight");
 
-        foreach(GameObject NumberEaten in NumbersEaten)
+        foreach(GameObject NumberEaten in NumbersEatenRight)
         {
             if(NumberEaten.GetComponent<aXelNumber>().Eaten == true)
             {
@@ -152,21 +147,49 @@ public class PlayerMovement : MonoBehaviour {
         if(solution >= 10.0f && OneFinished == false)
         {
 
-            this.transform.Rotate(Vector3.forward * speed * Time.deltaTime);
+            foreach(GameObject NumberEaten in NumbersEatenLeft)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
+        foreach(GameObject NumberEaten in NumbersEatenRight)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+            transform.Rotate(Vector3.forward * speed * Time.deltaTime);
+            //rb.transform.rotation = Quaternion.Euler (0, 0, 90.0f);
 
         }
 
-        if(OneFinished == true && TwoFinished == false && solution < 0.0f)
+        if(OneFinished == true && TwoFinished == false && solution <= -10.0f)
         {
+            foreach(GameObject NumberEaten in NumbersEatenLeft)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
 
-            this.transform.Rotate(Vector3.forward * speed * Time.deltaTime);
+        foreach(GameObject NumberEaten in NumbersEatenRight)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+            transform.Rotate(Vector3.forward * speed * Time.deltaTime);
 
         }
 
-        if(TwoFinished == true && solution < -100.0f)
+        if(TwoFinished == true && solution >= 10.0f)
         {
+            foreach(GameObject NumberEaten in NumbersEatenLeft)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
 
-            this.transform.Rotate(Vector3.forward * speed * Time.deltaTime);
+        foreach(GameObject NumberEaten in NumbersEatenRight)
+        {
+            NumberEaten.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+            transform.Rotate(Vector3.forward * speed * Time.deltaTime);
 
         }
 
@@ -178,9 +201,9 @@ public class PlayerMovement : MonoBehaviour {
 
             rb.transform.rotation = Quaternion.Euler (0, 0, 90.0f);
 
-            //startPosition = new Vector3 (rb.transform.position.x, rb.transform.position.y, rb.transform.position.z);
+            //startPosition = new Vector3 (rb.transform.localPosition.x, rb.transform.localPosition.y, rb.transform.localPosition.z);
 
-            //targetposition = new Vector3 (rb.transform.position.x, rb.transform.position.y + step, rb.transform.position.z);
+            //targetposition = new Vector3 (rb.transform.localPosition.x, rb.transform.localPosition.y + step, rb.transform.localPosition.z);
 
                 if(! Physics2D.OverlapCircle(movePoint.position + new Vector3 (0.0f,step, 0.0f), .2f, whatStopsMovement))
                 {
@@ -200,7 +223,7 @@ public class PlayerMovement : MonoBehaviour {
         if (RightPress == true) {
             rb.transform.rotation = Quaternion.Euler (0, 0, 0.0f);
 
-            //targetposition = new Vector3 (rb.transform.position.x + step, rb.transform.position.y, rb.transform.position.z);
+            //targetposition = new Vector3 (rb.transform.localPosition.x + step, rb.transform.localPosition.y, rb.transform.localPosition.z);
             
             if(! Physics2D.OverlapCircle(movePoint.position + new Vector3 (step,0.0f, 0.0f), .2f, whatStopsMovement))
             {
@@ -215,7 +238,7 @@ public class PlayerMovement : MonoBehaviour {
         if (LeftPress == true) {
             rb.transform.rotation = Quaternion.Euler (180.0f, 0, -180.0f);
 
-            //targetposition = new Vector3 (rb.transform.position.x + -step, rb.transform.position.y, rb.transform.position.z);
+            //targetposition = new Vector3 (rb.transform.localPosition.x + -step, rb.transform.localPosition.y, rb.transform.localPosition.z);
             
             if(! Physics2D.OverlapCircle(movePoint.position + new Vector3 (-step,0.0f, 0.0f), .2f, whatStopsMovement))
             {
@@ -229,7 +252,7 @@ public class PlayerMovement : MonoBehaviour {
         if (DownPress == true) {
             rb.transform.rotation = Quaternion.Euler (0, 0, -90.0f);
 
-            //targetposition = new Vector3 (rb.transform.position.x, rb.transform.position.y + -step, rb.transform.position.z);
+            //targetposition = new Vector3 (rb.transform.localPosition.x, rb.transform.localPosition.y + -step, rb.transform.localPosition.z);
             
             if(! Physics2D.OverlapCircle(movePoint.position + new Vector3 (0.0f,-step, 0.0f), .2f, whatStopsMovement))
             {
