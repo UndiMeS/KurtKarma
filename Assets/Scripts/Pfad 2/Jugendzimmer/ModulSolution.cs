@@ -26,18 +26,18 @@ public class ModulSolution : MonoBehaviour
     // Update is called once per frame
     void Update () {
         if (SNESColliderEnter == true && Modul.GetComponent<ClickOnItem> ().selected == false) {
-            ItemPlaceOne.GetComponent<ItemPlace>().ItemListStart = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().ItemListStart = false;
-            ItemPlaceOne.GetComponent<ItemPlace>().ItemListStartOne = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().ItemListStartOne = false;
-            ItemPlaceOne.GetComponent<ItemPlace>().ItemListStartTwo = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().ItemListStartTwo = false;
-            ItemPlaceOne.GetComponent<ItemPlace>().fullOne = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().fullTwo = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().fullOne = false;
-            ItemPlaceOne.GetComponent<ItemPlace>().fullTwo = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().DragItemOne = false;
-            ItemPlaceOne.GetComponent<ItemPlace>().DragItemTwo = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().ItemListStart = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().ItemListStart = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().ItemListStartOne = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().ItemListStartOne = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().ItemListStartTwo = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().ItemListStartTwo = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().fullOne = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().fullTwo = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().fullOne = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().fullTwo = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().DragItemOne = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().DragItemTwo = false;
             Modul.GetComponent<ClickOnItem> ().DragOne = false;
             Modul.GetComponent<ClickOnItem> ().DragTwo = false;
             Modul.transform.position = this.transform.position;

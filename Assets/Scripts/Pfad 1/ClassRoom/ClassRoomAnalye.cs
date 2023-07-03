@@ -20,6 +20,13 @@ public class ClassRoomAnalye : MonoBehaviour
 
     public GameObject Room_4_Handler;
 
+    public AudioSource ClosetSound;
+
+    public GameObject PyramidDoorButton;
+    public GameObject PortalButton;
+    public Settings SettingScript;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,9 +58,32 @@ public class ClassRoomAnalye : MonoBehaviour
             
         }
 
-        if(NumberOfSelections >4)
+        if(NumberOfSelections == 4)
             {
-                foreach(GameObject classobject in ClassObjects)
+                if( Uhr.GetComponent<OnClickOutline>().selected == true &&
+                    Kreide.GetComponent<OnClickOutline>().selected == true &&
+                    Schwamm.GetComponent<OnClickOutline>().selected == true &&
+                    Mülleimer.GetComponent<OnClickOutline>().selected == true)
+                    {
+                        
+
+                        StartCoroutine(RightSelections());
+
+                        foreach(GameObject classobject in ClassObjects)
+                        {
+                            classobject.GetComponent<OnClickOutline>().selected = false;
+
+                            classobject.GetComponent<OnClickOutline>().M_material.SetColor("_OutlineColor", new Color32((byte) 0, (byte) 0, (byte) 0, (byte) 0));
+                            classobject.GetComponent<OnClickOutline>().SelectionCount = 0;
+
+
+                            classobject.GetComponent<OnClickOutline>().enabled = false;
+                        }
+
+                    }
+                    else
+                    {
+                                        foreach(GameObject classobject in ClassObjects)
                 {
                     classobject.GetComponent<OnClickOutline>().selected = false;
 
@@ -62,6 +92,8 @@ public class ClassRoomAnalye : MonoBehaviour
                 }
 
                 StartCoroutine(FalseSelections());
+                    }
+
                 
             }
 
@@ -95,15 +127,47 @@ public class ClassRoomAnalye : MonoBehaviour
     IEnumerator FalseSelections()
     {
         RedFrame.SetActive(true);
-        yield return new WaitForSeconds(1.0f);
+        PyramidDoorButton.SetActive(false);
+        PortalButton.SetActive(false);
+
+
+        foreach(GameObject classobject in ClassObjects)
+        {
+            classobject.GetComponent<OnClickOutline>().enabled = false;
+        }
+
+
+
+        yield return new WaitForSeconds(2.0f);
+        PyramidDoorButton.SetActive(true);
+        PortalButton.SetActive(true);
         RedFrame.SetActive(false);
+
+        foreach(GameObject classobject in ClassObjects)
+        {
+            classobject.GetComponent<OnClickOutline>().enabled = true;
+        }
     }
 
     IEnumerator RightSelections()
     {
         ClassRoomButtons classroombuttons = Room_4_Handler.GetComponent<ClassRoomButtons>();
         GreenFrame.SetActive(true);
+        PyramidDoorButton.SetActive(false);
+        PortalButton.SetActive(false);
+
+        foreach(GameObject classobject in ClassObjects)
+        {
+            classobject.GetComponent<OnClickOutline>().enabled = false;
+        }
+
+
         yield return new WaitForSeconds(1.0f);
+        ClosetSound.Play();
+        SettingScript.HintNumber = 5;
+        yield return new WaitForSeconds(1.0f);
+        PyramidDoorButton.SetActive(true);
+        PortalButton.SetActive(true);
         GreenFrame.SetActive(false);
         classroombuttons.OpenCloset();
     }

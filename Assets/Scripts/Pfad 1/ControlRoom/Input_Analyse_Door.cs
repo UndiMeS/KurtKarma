@@ -35,6 +35,8 @@ public class Input_Analyse_Door : MonoBehaviour
     public GameObject BackButton;
     public Settings SettingScript;
 
+    public Button ConfirmButton;
+
     public GameObject DevilButton;
     public GameObject HellExitLeft;
     public GameObject HellExitRight;
@@ -110,6 +112,7 @@ public class Input_Analyse_Door : MonoBehaviour
             CorrectButton.SetActive(true);
             //RichtigSound.Play();
             BackButton.GetComponent<Button>().interactable = false;
+            ConfirmButton.interactable = false;
             StartCoroutine(WaitAndConfirm(WaitTime));
 
             

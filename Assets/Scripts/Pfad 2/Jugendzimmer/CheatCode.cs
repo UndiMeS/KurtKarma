@@ -41,6 +41,8 @@ public class CheatCode : MonoBehaviour
     public Settings SettingsScript;
 
     public bool HintBoolOne;
+
+    public bool solved;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,8 +57,9 @@ public class CheatCode : MonoBehaviour
 
             
 
-            if(this.gameObject.name == "CheatAnalyse")
+            if(this.gameObject.name == "CheatAnalyse" && solved == false)
             {
+                solved = true;
             Debug.Log("Passwort ist Korrekt");
             StartCoroutine(KorrektPasswort());
             GrüneLampe.SetActive(true);

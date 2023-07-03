@@ -13,14 +13,39 @@ public class ScaleLeftSnapping : MonoBehaviour {
     public GameObject KeyBall;
     public float speed = 1.0f;
     public float Zrotation;
+
+    public bool SaveBallSnap;
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        
+    }
     void Start () {
+
+        if(SaveBallSnap == true){
+            BallColliderEnter = true;
+        }
+        else{
+            BallColliderExit = true;
+        }
+
+
         Zrotation = pole.transform.rotation.eulerAngles.z;
         KeyballSelected = KeyBall.GetComponent<DragAndDrop> ();
     }
 
     // Update is called once per frame
     void Update () {
+
+        if(BallColliderEnter == true && BallColliderExit == false)
+        {
+            SaveBallSnap = true;
+        }
+        else{
+            SaveBallSnap = false;
+        }
+
         if (BallColliderEnter == true && KeyballSelected.selected == false) {
             KeyBall.transform.position = new Vector3 (ScaleSnapping.transform.position.x, ScaleSnapping.transform.position.y, KeyBall.transform.position.z);
 
@@ -42,19 +67,19 @@ public class ScaleLeftSnapping : MonoBehaviour {
         }
     }
 
-    // void OnTriggerStay2D(Collider2D collision)
-    // {
-    //     if(collision.gameObject.name =="KeyBall")
-    //     {
-    //         Debug.Log("collision");
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.name =="KeyBall")
+        {
+            Debug.Log("collision");
 
-    //         BallColliderEnter = true;
-    //         BallColliderExit = false;
-    //     }
-    // }
+            BallColliderEnter = true;
+            BallColliderExit = false;
+        }
+    }
 
     void OnTriggerExit2D (Collider2D collision) {
-        if (collision.gameObject.name == "KeyBall") {
+        if (collision.gameObject.name == "KeyBall" && KeyballSelected.selected == true) {
             Debug.Log ("collision exit");
             BallColliderExit = true;
             BallColliderEnter = false;

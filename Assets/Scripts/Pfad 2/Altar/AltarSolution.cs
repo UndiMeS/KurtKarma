@@ -28,6 +28,7 @@ public class AltarSolution : MonoBehaviour
     public Sprite ButtonNeutral;
     public bool Correct;
     public bool Win;
+    public Button BackButton;
 
     public VideoHandler VideoScript;
 
@@ -94,6 +95,7 @@ public class AltarSolution : MonoBehaviour
     {
         if(AllCubesFalseOne() == true && AllCubesTrueTwo() == true || AllCubesTrueOne() == true && AllCubesFalseTwo() == true)
         {
+            BackButton.interactable = false;
             Correct = true;
             RiddleButton.GetComponent<Image>().sprite = ButtonTrue;
 

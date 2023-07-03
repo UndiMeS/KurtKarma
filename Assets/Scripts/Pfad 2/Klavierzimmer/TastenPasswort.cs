@@ -34,6 +34,10 @@ public class TastenPasswort : MonoBehaviour
     public Animator TokenAnim;
 
     public Settings SettingsScript;
+
+    public bool solved;
+
+    public bool secretsolved;
     void Start()
     {
         
@@ -42,8 +46,10 @@ public class TastenPasswort : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Passwort.Contains(PasswortLösung))
+        if(Passwort.Contains(PasswortLösung) && solved == false)
         {
+
+            solved = true;
 
             Debug.Log("Passwort ist Korrekt");
             StartCoroutine(KorrektPasswort());
@@ -57,8 +63,10 @@ public class TastenPasswort : MonoBehaviour
             TokenAnim.SetBool("Start", true);
 
         }
-        if(Passwort.Contains(GeheimPasswortLösung))
+        if(Passwort.Contains(GeheimPasswortLösung) && secretsolved == false)
         {
+            secretsolved = true;
+            
             StartCoroutine(KorrektSecret());
         }
     }

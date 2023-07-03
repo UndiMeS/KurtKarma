@@ -42,6 +42,8 @@ public class Settings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BlueBulbCount = 0;
+        RedBulbCount = 0;
         SettingsMenu.SetActive(false);
         ConfirmMenu.SetActive(false);
         InventoryArrowScript = InventoryArrowDown.GetComponent<InventarArrow>();
@@ -75,8 +77,13 @@ public class Settings : MonoBehaviour
 
     public void QuitButton()
     {
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("StartMenuKurtKarma1");
         //Application.Quit();
+    }
+
+    public void FinishQuitButton()
+    {
+        SceneManager.LoadScene("SelectionMenu");
     }
 
     public void HintButton()

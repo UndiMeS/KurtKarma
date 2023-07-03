@@ -54,18 +54,18 @@ public class KasetteSolution : MonoBehaviour
 
 
             EinlegenSound.Play();
-            ItemPlaceOne.GetComponent<ItemPlace>().ItemListStart = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().ItemListStart = false;
-            ItemPlaceOne.GetComponent<ItemPlace>().ItemListStartOne = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().ItemListStartOne = false;
-            ItemPlaceOne.GetComponent<ItemPlace>().ItemListStartTwo = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().ItemListStartTwo = false;
-            ItemPlaceOne.GetComponent<ItemPlace>().fullOne = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().fullTwo = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().fullOne = false;
-            ItemPlaceOne.GetComponent<ItemPlace>().fullTwo = false;
-            ItemPlaceTwo.GetComponent<ItemPlace>().DragItemOne = false;
-            ItemPlaceOne.GetComponent<ItemPlace>().DragItemTwo = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().ItemListStart = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().ItemListStart = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().ItemListStartOne = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().ItemListStartOne = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().ItemListStartTwo = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().ItemListStartTwo = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().fullOne = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().fullTwo = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().fullOne = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().fullTwo = false;
+            ItemPlaceTwo.GetComponent<ItemPlaceTwo>().DragItemOne = false;
+            ItemPlaceOne.GetComponent<ItemPlaceTwo>().DragItemTwo = false;
             Kasette.GetComponent<ClickOnItem> ().DragOne = false;
             Kasette.GetComponent<ClickOnItem> ().DragTwo = false;
             Kasette.transform.parent = KasetteFinalParent.transform;

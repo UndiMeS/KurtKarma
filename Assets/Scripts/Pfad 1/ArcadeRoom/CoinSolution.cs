@@ -22,7 +22,7 @@ public class CoinSolution : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-        if (ChestColliderEnter == true && Coin.GetComponent<ClickOnKey> ().selected == false) {
+        if (ChestColliderEnter == true && Coin.GetComponent<ClickOnCoin> ().selected == false) {
             GameObject.Find("ItemPlace_1").GetComponent<ItemPlace>().ItemListStart = false;
             GameObject.Find("ItemPlace_2").GetComponent<ItemPlace>().ItemListStart = false;
 
@@ -41,8 +41,8 @@ public class CoinSolution : MonoBehaviour
             GameObject.Find("ItemPlace_2").GetComponent<ItemPlace>().DragItemOne = false;
             GameObject.Find("ItemPlace_1").GetComponent<ItemPlace>().DragItemTwo = false;
 
-            Coin.GetComponent<ClickOnKey> ().DragOne = false;
-            Coin.GetComponent<ClickOnKey> ().DragTwo = false;
+            Coin.GetComponent<ClickOnCoin> ().DragOne = false;
+            Coin.GetComponent<ClickOnCoin> ().DragTwo = false;
             Coin.transform.position = this.transform.position;
             Coin.transform.localScale = new Vector3 (0.7f, 0.7f, 0);
             // Key.GetComponent<ClickOnKey> ().DragOne = false;

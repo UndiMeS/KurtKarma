@@ -8,10 +8,12 @@ public class MainMenu : MonoBehaviour
 {
 
     public AudioMixer audioMixer;
+    public string GameName;
+    public string SelectionMenu;
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("TetriX");
+        SceneManager.LoadScene(GameName);
     }
 
     public void QuitGame()
@@ -22,5 +24,10 @@ public class MainMenu : MonoBehaviour
     public void SetVolume (float volume)
     {
         audioMixer.SetFloat("volume", volume);
+    }
+
+    public void BackToSelection()
+    {
+        SceneManager.LoadScene(SelectionMenu);
     }
 }

@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/StartMenu.unity
+    path: Assets/Scenes/SelectionMenu.unity
+    guid: 1b6db05000afc4244b285b443ccd8785
+  - enabled: 1
+    path: Assets/Scenes/StartMenuKurtKarma1.unity
     guid: e99b5a3c1e4dcf2488a043ee6dda8e44
   - enabled: 1
     path: Assets/Scenes/escape_room_scene1.unity
@@ -17,9 +20,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/X-Bert.unity
     guid: 7e18a5ba24b690f41a6f102e0f2e9ca3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TetriX.unity
     guid: f18369a2209671940b87b25e1f54dbdc
+  - enabled: 1
+    path: Assets/Scenes/StartMenuKurtKarma2.unity
+    guid: 3bec68faa5d9047f0933a496246239dd
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 5e119950159197147a64b11325c06d6e,
       type: 2}

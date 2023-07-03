@@ -44,10 +44,10 @@ public class ClickOnItem : MonoBehaviour
     void Update()
     {
 
-        InItemBarOne = ItemPlaceOne.GetComponent<ItemPlace>().fullOne;
-        InItemBarTwo = ItemPlaceTwo.GetComponent<ItemPlace>().fullTwo;
-        ItemBarStartOne = ItemPlaceOne.GetComponent<ItemPlace>().ItemListStart;
-        ItemBarStartTwo = ItemPlaceTwo.GetComponent<ItemPlace>().ItemListStart;
+        InItemBarOne = ItemPlaceOne.GetComponent<ItemPlaceTwo>().fullOne;
+        InItemBarTwo = ItemPlaceTwo.GetComponent<ItemPlaceTwo>().fullTwo;
+        ItemBarStartOne = ItemPlaceOne.GetComponent<ItemPlaceTwo>().ItemListStart;
+        ItemBarStartTwo = ItemPlaceTwo.GetComponent<ItemPlaceTwo>().ItemListStart;
 
         if(InItemBarTwo == true)
         {

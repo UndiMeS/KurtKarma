@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NiranaButton : MonoBehaviour
 {
@@ -41,6 +42,8 @@ public class NiranaButton : MonoBehaviour
 
     public Settings SettingsScript;
     public bool HintBool;
+
+    public Button HintButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -92,6 +95,7 @@ public class NiranaButton : MonoBehaviour
 
             if(HintBool == false)
             {
+                HintButton.interactable = false;
                 WhiteTokens.SetActive(false);
                 
                 yield return new WaitForSeconds(1.0f);
@@ -115,8 +119,9 @@ public class NiranaButton : MonoBehaviour
                 HintBool = true;
 
 
-                yield return new WaitForSeconds(3.5f);
+                yield return new WaitForSeconds(4.5f);
                 AltarDoor.SetActive(true);
+                HintButton.interactable = true;
             }
 
             

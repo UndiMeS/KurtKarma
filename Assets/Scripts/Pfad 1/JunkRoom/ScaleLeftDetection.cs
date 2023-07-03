@@ -87,7 +87,7 @@ void OnTriggerStay2D(Collider2D collision)
 
 void OnTriggerExit2D(Collider2D collision)
 {
-    if(collision.gameObject.name =="KeyBall")
+    if(collision.gameObject.name =="KeyBall" && KeyballSelected.selected == true)
     {
 
         

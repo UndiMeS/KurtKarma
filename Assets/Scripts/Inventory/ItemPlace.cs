@@ -16,6 +16,9 @@ public class ItemPlace : MonoBehaviour
 
     public bool DragItemOne;
     public bool DragItemTwo;
+
+    public bool ItemOneEmpty;
+    public bool ItemTwoEmpty;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,15 +28,69 @@ public class ItemPlace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ItemOne)
+
+        if(ItemOne != null && fullOne == false)
         {
-            DragItemOne = ItemOne.GetComponent<ClickOnKey>().DragOne;
+            DragItemOne = true;
         }
+        else
+        {
+            DragItemOne = false;
+        }
+
+        if(ItemTwo != null && fullTwo == false)
+        {
+            DragItemTwo = true;
+        }
+        else
+        {
+            DragItemTwo = false;
+        }
+
+        if(ItemOne == null && DragItemOne == false && fullOne == false)
+        {
+            ItemOneEmpty = true;
+        }
+        else
+        {
+            ItemOneEmpty = false;
+        }
+
+        if(ItemTwo == null && DragItemTwo == false && fullTwo == false)
+        {
+            ItemTwoEmpty = true;
+        }
+        else
+        {
+            ItemTwoEmpty = false;
+        }
+
+        // if(ItemOne && ItemOne.name == "Schlüssel" || ItemOne && ItemOne.name == "Maya Teller")
+        // {
+        //     DragItemOne = ItemOne.GetComponent<ClickOnKey>().DragOne;
+        // }
+        // else if(ItemOne && ItemOne.name == "Münze")
+        // {
+        //     DragItemOne = ItemOne.GetComponent<ClickOnCoin>().DragOne;
+        // }
+        // else
+        // {
+        //     DragItemOne = false;
+        // }
         
-        if(ItemTwo)
-        {
-            DragItemTwo = ItemTwo.GetComponent<ClickOnKey>().DragTwo;
-        }
+        // if(ItemTwo && ItemTwo.name == "Schlüssel" || ItemTwo && ItemTwo.name == "Maya Teller")
+        // {
+        //     DragItemTwo = ItemTwo.GetComponent<ClickOnKey>().DragTwo;
+        // }
+
+        // else if(ItemTwo && ItemTwo.name == "Münze")
+        // {
+        //     DragItemTwo = ItemTwo.GetComponent<ClickOnCoin>().DragTwo;
+        // }
+        // else
+        // {
+        //     DragItemTwo = false;
+        // }
 
     }
 
@@ -42,6 +99,7 @@ public class ItemPlace : MonoBehaviour
         
         if(this.gameObject.name == "ItemPlace_1")
         {
+            ItemOne = col.gameObject;
             ItemListStart = true;
             fullOne = true;
             ItemListStartOne = true;
@@ -49,6 +107,7 @@ public class ItemPlace : MonoBehaviour
 
         if(this.gameObject.name == "ItemPlace_2")
         {
+            ItemTwo = col.gameObject;
             ItemListStart = true;
             if(DragItemOne == false)
             {
