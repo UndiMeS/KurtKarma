@@ -30,19 +30,19 @@ public class FinalScreenController : MonoBehaviour
 
 
 
-        if((int)timer.finalminutes <= 35)
+        if((int)timer.finalminutes <= 45)
         {
             ScoreCrazy.SetActive(true);
             ScoreDone.SetActive(false);
             ScoreSuper.SetActive(false);
         }
-        else if((int)timer.finalminutes > 35 && (int)timer.finalminutes <= 50)
+        else if((int)timer.finalminutes > 45 && (int)timer.finalminutes <= 75)
         {
             ScoreCrazy.SetActive(false);
             ScoreSuper.SetActive(true);
             ScoreDone.SetActive(false);
         }
-        else if((int)timer.finalminutes > 50)
+        else if((int)timer.finalminutes > 75)
         {
             ScoreCrazy.SetActive(false);
             ScoreSuper.SetActive(false);
